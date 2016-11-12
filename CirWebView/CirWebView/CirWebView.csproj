@@ -95,6 +95,7 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\fonts\icofont4d84.svg" />
     <Content Include="Default.aspx" />
+    <Content Include="View\ad-post.aspx" />
     <Content Include="View\signin.aspx" />
     <Content Include="images\1.png" />
     <Content Include="images\about-us\1.jpg" />
@@ -219,6 +220,13 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\ad-post.aspx.cs">
+      <DependentUpon>ad-post.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\ad-post.aspx.designer.cs">
+      <DependentUpon>ad-post.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Master.Master.cs">
       <DependentUpon>Master.Master</DependentUpon>

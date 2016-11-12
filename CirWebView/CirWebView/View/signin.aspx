@@ -5,6 +5,7 @@
 	<!-- signin-page -->
 	<section id="main" class="clearfix user-page">
 	<div class="container">
+
 			<div class="row text-center">
 				<!-- user-login -->			
 				<div class="">
