@@ -87,7 +87,7 @@
 						<li><a href="View/signin.aspx">Login </a></li>
 					</ul><!-- sign-in -->					
 
-					<a href="ad-post.html" class="btn">Anuncie!!!</a>
+					<a href="ad-post.aspx" class="btn">Anuncie!!!</a>
 				</div>
 				<!-- nav-right -->
 			</div><!-- container -->

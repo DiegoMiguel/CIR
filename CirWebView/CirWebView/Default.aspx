@@ -36,7 +36,9 @@
 
 
 </head>
+
 <body>
+  <form id="Form1" runat="server">
 	<header id="header" class="clearfix">
 		<!-- navbar -->
 		<nav class="navbar navbar-default">
@@ -72,9 +74,9 @@
 					<ul class="sign-in">
 						<li><a href="my-profile.html"><i class="fa fa-user"></i></li>
 						<li><a href="View/signin.aspx">Login </a></li>
-					</ul><!-- sign-in -->					
+       				</ul><!-- sign-in -->					
 
-					<a href="ad-post.html" class="btn">Anuncie!!!</a>
+					<a href="View/ad-post.aspx" class="btn">Anuncie!!!</a>
 				</div>
 				<!-- nav-right -->
 			</div><!-- container -->
@@ -882,5 +884,6 @@
 	  ga('send', 'pageview');
 
 	</script>
+</form>
 </body>
 </html>
