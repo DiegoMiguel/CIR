@@ -18,6 +18,7 @@ namespace CirWebApplication.Models
         public anuncio()
         {
             this.denuncias = new HashSet<denuncia>();
+            this.chat_master = new HashSet<chat_master>();
         }
     
         public int Anuncio_id { get; set; }
@@ -32,5 +33,7 @@ namespace CirWebApplication.Models
         public virtual ICollection<denuncia> denuncias { get; set; }
         public virtual categoria categoria { get; set; }
         public virtual usuario usuario { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<chat_master> chat_master { get; set; }
     }
 }

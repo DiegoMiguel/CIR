@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'd:\documents\visual studio 2015\Projects\CIR\CirWebApplication\Models\CirModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\luciano\Google Drive\CIR - Projeto Roberta - Projeto Integrador\AplicaçãoWeb\CirWebApplication\Models\CirModel.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

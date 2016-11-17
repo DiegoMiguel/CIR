@@ -31,5 +31,7 @@ namespace CirWebApplication.Models
         public virtual DbSet<denuncia> denuncias { get; set; }
         public virtual DbSet<preferencia> preferencias { get; set; }
         public virtual DbSet<usuario> usuarios { get; set; }
+        public virtual DbSet<chat_detalhe> chat_detalhe { get; set; }
+        public virtual DbSet<chat_master> chat_master { get; set; }
     }
 }

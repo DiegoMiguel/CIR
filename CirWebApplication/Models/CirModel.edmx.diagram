@@ -18,6 +18,12 @@
         <AssociationConnector Association="CIRModel.FK_Cidade" ManuallyRouted="false" />
         <AssociationConnector Association="CIRModel.FK_usrdenuncia" ManuallyRouted="false" />
         <AssociationConnector Association="CIRModel.FK_usuario" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="CIRModel.chat_detalhe" Width="1.5" PointX="9.75" PointY="7.125" />
+        <EntityTypeShape EntityType="CIRModel.chat_master" Width="1.5" PointX="7.5" PointY="7" />
+        <AssociationConnector Association="CIRModel.FK_anuncio_chat" />
+        <AssociationConnector Association="CIRModel.FK_master_id" />
+        <AssociationConnector Association="CIRModel.FK_usr_chat" />
+        <AssociationConnector Association="CIRModel.FK_usr_chat2" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

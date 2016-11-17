@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CIRModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CIRModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="anuncio">
           <Key>
             <PropertyRef Name="Anuncio_id" />
@@ -23,6 +23,25 @@
           </Key>
           <Property Name="Categoria_Produto_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Descricao" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="chat_detalhe">
+          <Key>
+            <PropertyRef Name="Chat_Detalhe_id" />
+          </Key>
+          <Property Name="Chat_Detalhe_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Chat_Master_id" Type="int" Nullable="false" />
+          <Property Name="Data" Type="datetime" Nullable="false" />
+          <Property Name="Chat_Anunciante" Type="text" Nullable="false" />
+          <Property Name="Chat_Usuario" Type="varchar" MaxLength="45" Nullable="false" />
+        </EntityType>
+        <EntityType Name="chat_master">
+          <Key>
+            <PropertyRef Name="Chat_Master_id" />
+          </Key>
+          <Property Name="Chat_Master_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Usuario_id_Anuncio" Type="int" Nullable="false" />
+          <Property Name="Anuncio_id" Type="int" Nullable="false" />
+          <Property Name="Usuario_Chat" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="cidades">
           <Key>
@@ -61,7 +80,20 @@
           <Property Name="Data_Cadastro" Type="date" Nullable="false" />
           <Property Name="Email" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="Senha" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="telefone" Type="varchar" MaxLength="11" />
         </EntityType>
+        <Association Name="FK_anuncio_chat">
+          <End Role="anuncio" Type="Self.anuncio" Multiplicity="1" />
+          <End Role="chat_master" Type="Self.chat_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="anuncio">
+              <PropertyRef Name="Anuncio_id" />
+            </Principal>
+            <Dependent Role="chat_master">
+              <PropertyRef Name="Anuncio_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_anunciodenuncia">
           <End Role="anuncio" Type="Self.anuncio" Multiplicity="1" />
           <End Role="denuncias" Type="Self.denuncias" Multiplicity="*" />
@@ -110,6 +142,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_master_id">
+          <End Role="chat_master" Type="Self.chat_master" Multiplicity="1" />
+          <End Role="chat_detalhe" Type="Self.chat_detalhe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="chat_master">
+              <PropertyRef Name="Chat_Master_id" />
+            </Principal>
+            <Dependent Role="chat_detalhe">
+              <PropertyRef Name="Chat_Master_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_usr_anuncio">
           <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
           <End Role="anuncio" Type="Self.anuncio" Multiplicity="*" />
@@ -119,6 +163,30 @@
             </Principal>
             <Dependent Role="anuncio">
               <PropertyRef Name="Usuario_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usr_chat">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="chat_master" Type="Self.chat_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="Usuario_id" />
+            </Principal>
+            <Dependent Role="chat_master">
+              <PropertyRef Name="Usuario_id_Anuncio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usr_chat2">
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="chat_master" Type="Self.chat_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuarios">
+              <PropertyRef Name="Usuario_id" />
+            </Principal>
+            <Dependent Role="chat_master">
+              <PropertyRef Name="Usuario_Chat" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -149,10 +217,16 @@
         <EntityContainer Name="CIRModelStoreContainer">
           <EntitySet Name="anuncio" EntityType="Self.anuncio" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="categoria" EntityType="Self.categoria" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="chat_detalhe" EntityType="Self.chat_detalhe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="chat_master" EntityType="Self.chat_master" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="cidades" EntityType="Self.cidades" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="denuncias" EntityType="Self.denuncias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="preferencias" EntityType="Self.preferencias" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="usuarios" EntityType="Self.usuarios" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_anuncio_chat" Association="Self.FK_anuncio_chat">
+            <End Role="anuncio" EntitySet="anuncio" />
+            <End Role="chat_master" EntitySet="chat_master" />
+          </AssociationSet>
           <AssociationSet Name="FK_anunciodenuncia" Association="Self.FK_anunciodenuncia">
             <End Role="anuncio" EntitySet="anuncio" />
             <End Role="denuncias" EntitySet="denuncias" />
@@ -169,9 +243,21 @@
             <End Role="cidades" EntitySet="cidades" />
             <End Role="usuarios" EntitySet="usuarios" />
           </AssociationSet>
+          <AssociationSet Name="FK_master_id" Association="Self.FK_master_id">
+            <End Role="chat_master" EntitySet="chat_master" />
+            <End Role="chat_detalhe" EntitySet="chat_detalhe" />
+          </AssociationSet>
           <AssociationSet Name="FK_usr_anuncio" Association="Self.FK_usr_anuncio">
             <End Role="usuarios" EntitySet="usuarios" />
             <End Role="anuncio" EntitySet="anuncio" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usr_chat" Association="Self.FK_usr_chat">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="chat_master" EntitySet="chat_master" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usr_chat2" Association="Self.FK_usr_chat2">
+            <End Role="usuarios" EntitySet="usuarios" />
+            <End Role="chat_master" EntitySet="chat_master" />
           </AssociationSet>
           <AssociationSet Name="FK_usrdenuncia" Association="Self.FK_usrdenuncia">
             <End Role="usuarios" EntitySet="usuarios" />
@@ -182,8 +268,7 @@
             <End Role="preferencias" EntitySet="preferencias" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CIRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -201,6 +286,7 @@
           <NavigationProperty Name="denuncias" Relationship="Self.FK_anunciodenuncia" FromRole="anuncio" ToRole="denuncias" />
           <NavigationProperty Name="categoria" Relationship="Self.FK_catprod" FromRole="anuncio" ToRole="categoria" />
           <NavigationProperty Name="usuario" Relationship="Self.FK_usr_anuncio" FromRole="anuncio" ToRole="usuarios" />
+          <NavigationProperty Name="chat_master" Relationship="CIRModel.FK_anuncio_chat" FromRole="anuncio" ToRole="chat_master" />
         </EntityType>
         <EntityType Name="categoria">
           <Key>
@@ -257,6 +343,9 @@
           <NavigationProperty Name="cidade" Relationship="Self.FK_Cidade" FromRole="usuarios" ToRole="cidades" />
           <NavigationProperty Name="denuncias" Relationship="Self.FK_usrdenuncia" FromRole="usuarios" ToRole="denuncias" />
           <NavigationProperty Name="preferencias" Relationship="Self.FK_usuario" FromRole="usuarios" ToRole="preferencias" />
+          <Property Name="telefone" Type="String" MaxLength="11" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="chat_master" Relationship="CIRModel.FK_usr_chat" FromRole="usuario" ToRole="chat_master" />
+          <NavigationProperty Name="chat_master1" Relationship="CIRModel.FK_usr_chat2" FromRole="usuario" ToRole="chat_master" />
         </EntityType>
         <Association Name="FK_anunciodenuncia">
           <End Role="anuncio" Type="Self.anuncio" Multiplicity="1" />
@@ -377,7 +466,97 @@
             <End Role="usuarios" EntitySet="usuarios" />
             <End Role="preferencias" EntitySet="preferencias" />
           </AssociationSet>
+          <EntitySet Name="chat_detalhe" EntityType="CIRModel.chat_detalhe" />
+          <EntitySet Name="chat_master" EntityType="CIRModel.chat_master" />
+          <AssociationSet Name="FK_anuncio_chat" Association="CIRModel.FK_anuncio_chat">
+            <End Role="anuncio" EntitySet="anuncios" />
+            <End Role="chat_master" EntitySet="chat_master" />
+          </AssociationSet>
+          <AssociationSet Name="FK_master_id" Association="CIRModel.FK_master_id">
+            <End Role="chat_master" EntitySet="chat_master" />
+            <End Role="chat_detalhe" EntitySet="chat_detalhe" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usr_chat" Association="CIRModel.FK_usr_chat">
+            <End Role="usuario" EntitySet="usuarios" />
+            <End Role="chat_master" EntitySet="chat_master" />
+          </AssociationSet>
+          <AssociationSet Name="FK_usr_chat2" Association="CIRModel.FK_usr_chat2">
+            <End Role="usuario" EntitySet="usuarios" />
+            <End Role="chat_master" EntitySet="chat_master" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="chat_detalhe">
+          <Key>
+            <PropertyRef Name="Chat_Detalhe_id" />
+          </Key>
+          <Property Name="Chat_Detalhe_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Chat_Master_id" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Chat_Anunciante" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Chat_Usuario" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="chat_master" Relationship="CIRModel.FK_master_id" FromRole="chat_detalhe" ToRole="chat_master" />
+        </EntityType>
+        <EntityType Name="chat_master">
+          <Key>
+            <PropertyRef Name="Chat_Master_id" />
+          </Key>
+          <Property Name="Chat_Master_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Usuario_id_Anuncio" Type="Int32" Nullable="false" />
+          <Property Name="Anuncio_id" Type="Int32" Nullable="false" />
+          <Property Name="Usuario_Chat" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="anuncio" Relationship="CIRModel.FK_anuncio_chat" FromRole="chat_master" ToRole="anuncio" />
+          <NavigationProperty Name="chat_detalhe" Relationship="CIRModel.FK_master_id" FromRole="chat_master" ToRole="chat_detalhe" />
+          <NavigationProperty Name="usuario" Relationship="CIRModel.FK_usr_chat" FromRole="chat_master" ToRole="usuario" />
+          <NavigationProperty Name="usuario1" Relationship="CIRModel.FK_usr_chat2" FromRole="chat_master" ToRole="usuario" />
+        </EntityType>
+        <Association Name="FK_anuncio_chat">
+          <End Type="CIRModel.anuncio" Role="anuncio" Multiplicity="1" />
+          <End Type="CIRModel.chat_master" Role="chat_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="anuncio">
+              <PropertyRef Name="Anuncio_id" />
+            </Principal>
+            <Dependent Role="chat_master">
+              <PropertyRef Name="Anuncio_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_master_id">
+          <End Type="CIRModel.chat_master" Role="chat_master" Multiplicity="1" />
+          <End Type="CIRModel.chat_detalhe" Role="chat_detalhe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="chat_master">
+              <PropertyRef Name="Chat_Master_id" />
+            </Principal>
+            <Dependent Role="chat_detalhe">
+              <PropertyRef Name="Chat_Master_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usr_chat">
+          <End Type="CIRModel.usuario" Role="usuario" Multiplicity="1" />
+          <End Type="CIRModel.chat_master" Role="chat_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="Usuario_id" />
+            </Principal>
+            <Dependent Role="chat_master">
+              <PropertyRef Name="Usuario_id_Anuncio" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_usr_chat2">
+          <End Type="CIRModel.usuario" Role="usuario" Multiplicity="1" />
+          <End Type="CIRModel.chat_master" Role="chat_master" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="usuario">
+              <PropertyRef Name="Usuario_id" />
+            </Principal>
+            <Dependent Role="chat_master">
+              <PropertyRef Name="Usuario_Chat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -437,6 +616,7 @@
           <EntitySetMapping Name="usuarios">
             <EntityTypeMapping TypeName="CIRModel.usuario">
               <MappingFragment StoreEntitySet="usuarios">
+                <ScalarProperty Name="telefone" ColumnName="telefone" />
                 <ScalarProperty Name="Usuario_id" ColumnName="Usuario_id" />
                 <ScalarProperty Name="Nome" ColumnName="Nome" />
                 <ScalarProperty Name="CPF_CNPJ" ColumnName="CPF_CNPJ" />
@@ -444,6 +624,27 @@
                 <ScalarProperty Name="Data_Cadastro" ColumnName="Data_Cadastro" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Senha" ColumnName="Senha" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chat_detalhe">
+            <EntityTypeMapping TypeName="CIRModel.chat_detalhe">
+              <MappingFragment StoreEntitySet="chat_detalhe">
+                <ScalarProperty Name="Chat_Usuario" ColumnName="Chat_Usuario" />
+                <ScalarProperty Name="Chat_Anunciante" ColumnName="Chat_Anunciante" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+                <ScalarProperty Name="Chat_Master_id" ColumnName="Chat_Master_id" />
+                <ScalarProperty Name="Chat_Detalhe_id" ColumnName="Chat_Detalhe_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chat_master">
+            <EntityTypeMapping TypeName="CIRModel.chat_master">
+              <MappingFragment StoreEntitySet="chat_master">
+                <ScalarProperty Name="Usuario_Chat" ColumnName="Usuario_Chat" />
+                <ScalarProperty Name="Anuncio_id" ColumnName="Anuncio_id" />
+                <ScalarProperty Name="Usuario_id_Anuncio" ColumnName="Usuario_id_Anuncio" />
+                <ScalarProperty Name="Chat_Master_id" ColumnName="Chat_Master_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

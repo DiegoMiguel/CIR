@@ -20,6 +20,8 @@ namespace CirWebApplication.Models
             this.anuncios = new HashSet<anuncio>();
             this.denuncias = new HashSet<denuncia>();
             this.preferencias = new HashSet<preferencia>();
+            this.chat_master = new HashSet<chat_master>();
+            this.chat_master1 = new HashSet<chat_master>();
         }
     
         public int Usuario_id { get; set; }
@@ -29,6 +31,7 @@ namespace CirWebApplication.Models
         public System.DateTime Data_Cadastro { get; set; }
         public string Email { get; set; }
         public string Senha { get; set; }
+        public string telefone { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<anuncio> anuncios { get; set; }
@@ -37,5 +40,9 @@ namespace CirWebApplication.Models
         public virtual ICollection<denuncia> denuncias { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<preferencia> preferencias { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<chat_master> chat_master { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<chat_master> chat_master1 { get; set; }
     }
 }
