@@ -10,7 +10,7 @@
 namespace CirWebView {
     
     
-    public partial class Default {
+    public partial class Principal {
         
         /// <summary>
         /// preset control.

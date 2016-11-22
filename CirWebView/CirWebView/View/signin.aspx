@@ -13,19 +13,21 @@
 					<div class="user-account-login">
 						<h2>Acessar minha conta</h2>
 						<!-- form -->
-						<form name="login" action="../Default.aspx">
+						<form name="login" runat="server">
+                            <asp:Label ID="lblMensagem" runat="server"></asp:Label>
+
 							<div class="form-group">
-								<input type="email" id="email" name="email" required="" onblur="validacaoEmail()" class="form-control" placeholder="email@email.com" >
+                                <asp:TextBox runat="server" type="email" id="txtEmail" name="email" required="" onblur="validacaoEmail()" class="form-control" placeholder="email@email.com" />
 							</div>
 							<div class="form-group">
-								<input type="password" class="form-control" placeholder="Senha" >
+								<asp:TextBox runat="server" id="txtSenha" type="password" required="" class="form-control" placeholder="Senha" />
 							</div>
-						<button type="submit" class="btn">Entrar</button>
+                            <asp:Button runat="server" type="submit" Text="Go" class="btn" OnClick="btnEntrar_Click"></asp:Button>
 						</form><!-- form -->
 						<!-- forgot-password -->
 						<div class="user-option">
 							<div class="checkbox pull-left">
-								<label for="logged"><input type="checkbox" name="logged" id="logged"> Mantenha-me conectado </label>
+								<label for="logged"><input type="checkbox" name="logged" id="logged"/> Mantenha-me conectado </label>
 							</div>
 							<div class="pull-right forgot-password">
 								<a href="#">Esqueci a senha</a>
@@ -37,19 +39,19 @@
 						<h2>Ainda não tenho cadastro</h2>
 						<form action="../Default.aspx">
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Nome" >
+								<input type="text" class="form-control" placeholder="Nome" />
 							</div>
 							<div class="form-group">
-								<input type="email" class="form-control" placeholder="Email">
+								<input type="email" class="form-control" placeholder="Email"/>
 							</div>
 							<div class="form-group">
-								<input type="password" class="form-control" placeholder="Senha">
+								<input type="password" class="form-control" placeholder="Senha"/>
 							</div>
 							<div class="form-group">
-								<input type="password" class="form-control" placeholder="Confirmação de Senha">
+								<input type="password" class="form-control" placeholder="Confirmação de Senha"/>
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Telefone">
+								<input type="text" class="form-control" placeholder="Telefone"/>
 							</div>
 							<!-- select -->
 							<select class="form-control">
