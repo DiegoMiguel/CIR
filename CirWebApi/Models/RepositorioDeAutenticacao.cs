@@ -25,7 +25,8 @@ namespace CirWebApi.Models
         {
             IdentityUser usuario = new IdentityUser
             {
-                UserName = novoUsuario.EMAIL
+                UserName = novoUsuario.EMAIL,
+                Email = novoUsuario.EMAIL
             };
 
             var result = await _gerenciaDeUser.CreateAsync(usuario, novoUsuario.SENHA);

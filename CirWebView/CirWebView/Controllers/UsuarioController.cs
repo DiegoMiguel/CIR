@@ -6,14 +6,16 @@ using System.Net.Http;
 using System.Web;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+using System.Web.Mvc;
 
 namespace CirWebView.Controllers
 
 {
     public class UsuarioController
     {
-        public async Task<string> Autenticar(string email, string senha)
+        public async Task<bool> Autenticar(string email, string senha)
         {
+            HttpContext sessaoCorrente = HttpContext.Current;
             using (var client = new HttpClient())
             {
                 // Config client
@@ -29,14 +31,27 @@ namespace CirWebView.Controllers
                    {"password", senha}
                };
 
-                //enviando requisicao
+                
+                //enviando requisicao e recebe resposta do tipo HttpResponseMessage
                 var responseMessage = client.PostAsync(client.BaseAddress + "/token", new FormUrlEncodedContent(form)).Result;
 
+                if (responseMessage.StatusCode != System.Net.HttpStatusCode.OK)
+                {
+                    sessaoCorrente.Session["token"] = null;
+                    return false;
+                }
+
                 //get access token from response body
-                var responseJson = responseMessage.Content.ReadAsStringAsync(); 
-                JObject json = JObject.Parse(responseJson.Result);
-                return json.GetValue("access_token").ToString();
+                var responseJson = responseMessage.Content.ReadAsStringAsync(); // Serializa resposta em string
+                JObject json = JObject.Parse(responseJson.Result);  // Serializa string para objeto json
+                sessaoCorrente.Session["token"] = json.GetValue("access_token").ToString();
+                return true;
             }
+        }
+
+        public ActionResult Registrar(object sender, EventArgs e)
+        {
+            return new RedirectResult("Default.aspx");
         }
     }
 }

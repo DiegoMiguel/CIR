@@ -11,29 +11,52 @@ namespace CirWebView.View
 {
     public partial class signin1 : System.Web.UI.Page
     {
+        protected string mensagem;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            string acao = Request.QueryString["action"];
 
+            if (acao != null)   // Quer dizer que ação é igual a login!
+                EfetuarLogin();
         }
 
-        protected void btnEntrar_Click(object sender, EventArgs e)
+        private void EfetuarLogin()
         {
-            string token = new UsuarioController().Autenticar(txtEmail.Text, txtSenha.Text).Result;
-            Server.Transfer("ad-post.aspx");
+            string email = Request.Form["txtEmail"];
+            string senha = Request.Form["txtSenha"];
 
-           /* if (usuarioAutenticado != null)
-            {
-                Session["autenticacao"] = "OK";
-                Session["idUsuario"] = usuarioAutenticado.Id;
-                Session["nomeUsuario"] = usuarioAutenticado.Nome;
-                Session["senhaUsuario"] = usuarioAutenticado.Senha;
+            bool sucess = new UsuarioController().Autenticar(email, senha).Result;
 
-                Server.Transfer("Default.aspx");
-            }
+            if (!sucess)
+                mensagem = "Email e/ou senha inválidos!";
             else
-            {
-                lblMensagem.Text = "Email e/ou Senha Inválidos!";
-            }*/
+                Server.Transfer("ad-post.aspx");
         }
+
+ /*       protected void btnEntrar_Click(object sender, EventArgs e)
+        {
+            bool sucess = new UsuarioController().Autenticar(txtEmail.Text, txtSenha.Text).Result;
+
+            if (!sucess)
+                lblMensagem.Text = "Email e/ou senha inválidos!";
+            else
+                Server.Transfer("ad-post.aspx");
+                           
+
+            /* if (usuarioAutenticado != null)
+             {
+                 
+                 Session["idUsuario"] = usuarioAutenticado.Id;
+                 Session["nomeUsuario"] = usuarioAutenticado.Nome;
+                 Session["senhaUsuario"] = usuarioAutenticado.Senha;
+
+                 Server.Transfer("Default.aspx");
+             }
+             else
+             {
+                 
+             }
+        }*/
     }
 }

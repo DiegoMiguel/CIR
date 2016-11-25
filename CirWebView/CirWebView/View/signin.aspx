@@ -2,7 +2,7 @@
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-	<!-- signin-page -->
+    <!-- signin-page -->
 	<section id="main" class="clearfix user-page">
 	<div class="container">
 
@@ -13,17 +13,17 @@
 					<div class="user-account-login">
 						<h2>Acessar minha conta</h2>
 						<!-- form -->
-						<form name="login" runat="server">
-                            <asp:Label ID="lblMensagem" runat="server"></asp:Label>
-
+						<form method="post" action="signin.aspx?action=login">
+                            <label id="lblMensagem" class="or-separator-text" style="color:aquamarine"><% Response.Write(mensagem); %></label>
 							<div class="form-group">
-                                <asp:TextBox runat="server" type="email" id="txtEmail" name="email" required="" onblur="validacaoEmail()" class="form-control" placeholder="email@email.com" />
+                                <input type="email" name="txtEmail" required="" onblur="validacaoEmail()" class="form-control" placeholder="email@email.com" />
 							</div>
 							<div class="form-group">
-								<asp:TextBox runat="server" id="txtSenha" type="password" required="" class="form-control" placeholder="Senha" />
+								<input  type="password" name="txtSenha" required="" class="form-control" placeholder="Senha" />
 							</div>
-                            <asp:Button runat="server" type="submit" Text="Go" class="btn" OnClick="btnEntrar_Click"></asp:Button>
+                            <input type="submit" value="Go" class="btn"/>
 						</form><!-- form -->
+
 						<!-- forgot-password -->
 						<div class="user-option">
 							<div class="checkbox pull-left">
@@ -34,24 +34,24 @@
 							</div>
 						</div><!-- forgot-password -->
 					</div>
-					
+
 					<div class="user-account-cadastro">
 						<h2>Ainda não tenho cadastro</h2>
-						<form action="../Default.aspx">
+						<form method="post" action="../Default.aspx">
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Nome" />
+								<input type="text" id="cadNome" class="form-control" placeholder="Nome" />
 							</div>
 							<div class="form-group">
-								<input type="email" class="form-control" placeholder="Email"/>
+								<input type="email" id="cadEmail" class="form-control" placeholder="Email"/>
 							</div>
 							<div class="form-group">
-								<input type="password" class="form-control" placeholder="Senha"/>
+								<input type="password" id="cadSenha" class="form-control" placeholder="Senha"/>
 							</div>
 							<div class="form-group">
-								<input type="password" class="form-control" placeholder="Confirmação de Senha"/>
+								<input type="password" id="cadConfSenha" class="form-control" placeholder="Confirmação de Senha"/>
 							</div>
 							<div class="form-group">
-								<input type="text" class="form-control" placeholder="Telefone"/>
+                                <input type="text" id="cadTel" class="form-control" placeholder="0000000000" />
 							</div>
 							<!-- select -->
 							<select class="form-control">
@@ -61,8 +61,7 @@
 								<option value="#">Lagoa Seca</option>
 								<option value="#">Londres</option>
 							</select><!-- select -->
-							
-							<button type="submit" href="" class="btn">Confirmar</button>	
+							<button type="submit" class="btn">Confirmar</button>	
 						</form>
 						<!-- checkbox -->
 					</div>
