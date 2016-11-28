@@ -7,13 +7,14 @@ using System.Web;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using System.Web.Mvc;
+using System.Net;
 
 namespace CirWebView.Controllers
 
 {
     public class UsuarioController
     {
-        public async Task<bool> Autenticar(string email, string senha)
+        public async Task<string> Autenticar(string email, string senha)
         {
             HttpContext sessaoCorrente = HttpContext.Current;
             using (var client = new HttpClient())
@@ -31,21 +32,35 @@ namespace CirWebView.Controllers
                    {"password", senha}
                };
 
+                HttpResponseMessage responseMessage;
+                try
+                {
+                    //envia requisicao e recebe resposta do tipo HttpResponseMessage
+                    responseMessage = client.PostAsync(client.BaseAddress + "/token", new FormUrlEncodedContent(form)).Result;
+                }
+                catch
+                {
+                    return "Erro no Servidor! Tente novamente mais tarde, Obrigado";
+                }
                 
-                //enviando requisicao e recebe resposta do tipo HttpResponseMessage
-                var responseMessage = client.PostAsync(client.BaseAddress + "/token", new FormUrlEncodedContent(form)).Result;
 
-                if (responseMessage.StatusCode != System.Net.HttpStatusCode.OK)
+                if (!responseMessage.IsSuccessStatusCode)
                 {
                     sessaoCorrente.Session["token"] = null;
-                    return false;
+
+                    if (responseMessage.StatusCode.Equals(HttpStatusCode.BadRequest))
+                    {
+                        return "Email e/ou senha inválidos!";
+                    }
+
+                    return "Erro interno! Tente novamente mais tarde, Obrigado";
                 }
 
                 //get access token from response body
                 var responseJson = responseMessage.Content.ReadAsStringAsync(); // Serializa resposta em string
                 JObject json = JObject.Parse(responseJson.Result);  // Serializa string para objeto json
                 sessaoCorrente.Session["token"] = json.GetValue("access_token").ToString();
-                return true;
+                return "ok";
             }
         }
 

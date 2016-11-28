@@ -1,5 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="Master.Master" AutoEventWireup="true" CodeBehind="signin.aspx.cs" Inherits="CirWebView.View.signin1" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"> 
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery.maskedinput.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function(){
+                $('.cnpj').mask('99.999.999/9999-99');
+                $('.cpf').mask('999.999.999-99');
+        });
+    </script>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <!-- signin-page -->
@@ -37,30 +46,34 @@
 
 					<div class="user-account-cadastro">
 						<h2>Ainda não tenho cadastro</h2>
-						<form method="post" action="../Default.aspx">
+						<form runat="server">
 							<div class="form-group">
-								<input type="text" id="cadNome" class="form-control" placeholder="Nome" />
+								<asp:TextBox runat="server" required="" type="text" id="cadNome" class="form-control" placeholder="Nome" />
+							</div>
+                                
+                            <div>
+                                <asp:RadioButton ID="radioCpf" CssClass="radio-inline" runat="server" Text="CPF" GroupName="ChoiceCpfCnpj" OnCheckedChanged="radioCpf_CheckedChanged" AutoPostBack="True" Checked="True" />
+                                <asp:RadioButton ID="radioCnpj" CssClass="radio-inline" runat="server" Text="CNPJ" GroupName="ChoiceCpfCnpj" OnCheckedChanged="radioCnpj_CheckedChanged" AutoPostBack="True" />
+                            </div>
+                            <div runat="server" class="form-group">
+								<asp:TextBox runat="server" required="" ID="cadCpf" class="form-control cpf"/>
+                                <asp:TextBox runat="server" required="" ID="cadCnpj" class="form-control cnpj" Visible="False" />
 							</div>
 							<div class="form-group">
-								<input type="email" id="cadEmail" class="form-control" placeholder="Email"/>
+								<asp:TextBox runat="server" required="" onblur="validacaoEmail()" type="email" id="cadEmail" class="form-control" placeholder="Email"/>
 							</div>
 							<div class="form-group">
-								<input type="password" id="cadSenha" class="form-control" placeholder="Senha"/>
+								<asp:TextBox runat="server" type="password" required="" id="cadSenha" class="form-control" placeholder="Senha"/>
 							</div>
 							<div class="form-group">
-								<input type="password" id="cadConfSenha" class="form-control" placeholder="Confirmação de Senha"/>
+								<asp:CompareValidator class="or-separator-text" style="color:cadetblue" ID="CompareValidator1" runat="server" ControlToCompare="cadSenha" ControlToValidate="cadConfSenha" Display="Dynamic" ErrorMessage="Senhas não conferem" SetFocusOnError="True"></asp:CompareValidator>
+								<asp:TextBox runat="server" type="password" required="" id="cadConfSenha" class="form-control" placeholder="Confirmação de Senha"/>
 							</div>
-							<div class="form-group">
-                                <input type="text" id="cadTel" class="form-control" placeholder="0000000000" />
-							</div>
-							<!-- select -->
-							<select class="form-control">
-								<option value="#" disabled selected>Selecione sua Cidade</option>
-								<option value="#">Campina Grande</option>
-								<option value="#">Queimadas</option>
-								<option value="#">Lagoa Seca</option>
-								<option value="#">Londres</option>
-							</select><!-- select -->
+                            <div class="form-group-lg">
+                                <asp:DropDownList CssClass="dropdown-menu-left" ID="ddlEstados" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlEstados_SelectedIndexChanged" ></asp:DropDownList>
+                                <asp:DropDownList CssClass="dropdown-menu-left" ID="ddlCidades" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCidades_SelectedIndexChanged" Visible="False"></asp:DropDownList>
+                                <asp:Label class="or-separator-text" style="color:cadetblue" ID="lblLocal" runat="server"></asp:Label>
+                            </div>
 							<button type="submit" class="btn">Confirmar</button>	
 						</form>
 						<!-- checkbox -->
@@ -75,5 +88,4 @@
 			</button>
 		</div>
 	</section><!-- signin-page -->
-
 </asp:Content>

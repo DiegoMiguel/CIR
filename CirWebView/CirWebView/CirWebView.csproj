@@ -133,6 +133,13 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\fonts\icofont4d84.svg" />
     <Content Include="Default.aspx" />
+    <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.1.1.js" />
+    <Content Include="Scripts\jquery-3.1.1.min.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.js" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
+    <Content Include="Scripts\jquery.maskedinput.js" />
+    <Content Include="Scripts\jquery.maskedinput.min.js" />
     <Content Include="View\ad-post.aspx" />
     <Content Include="View\signin.aspx" />
     <Content Include="images\1.png" />
@@ -254,6 +261,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\CidadesController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
@@ -304,6 +312,8 @@
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\CIR.pubxml" />
     <Content Include="View\Master.Master" />
+    <Content Include="Scripts\jquery-3.1.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.1.1.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
