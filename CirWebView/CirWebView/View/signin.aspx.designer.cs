@@ -40,22 +40,13 @@ namespace CirWebView.View {
         protected global::System.Web.UI.WebControls.RadioButton radioCnpj;
         
         /// <summary>
-        /// Controle cadCpf.
+        /// Controle cadCpfCnpj.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cadCpf;
-        
-        /// <summary>
-        /// Controle cadCnpj.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox cadCnpj;
+        protected global::System.Web.UI.WebControls.TextBox cadCpfCnpj;
         
         /// <summary>
         /// Controle cadEmail.
@@ -103,6 +94,15 @@ namespace CirWebView.View {
         protected global::System.Web.UI.WebControls.DropDownList ddlEstados;
         
         /// <summary>
+        /// Controle rfvDdlEstados.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvDdlEstados;
+        
+        /// <summary>
         /// Controle ddlCidades.
         /// </summary>
         /// <remarks>
@@ -112,6 +112,15 @@ namespace CirWebView.View {
         protected global::System.Web.UI.WebControls.DropDownList ddlCidades;
         
         /// <summary>
+        /// Controle rdvDdlCidades.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rdvDdlCidades;
+        
+        /// <summary>
         /// Controle lblLocal.
         /// </summary>
         /// <remarks>
@@ -119,5 +128,14 @@ namespace CirWebView.View {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblLocal;
+        
+        /// <summary>
+        /// Controle btnCadastrar.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnCadastrar;
     }
 }

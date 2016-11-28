@@ -9,14 +9,15 @@ using Newtonsoft.Json.Linq;
 using System.Web.Mvc;
 using System.Net;
 
+
 namespace CirWebView.Controllers
 
 {
-    public class UsuarioController
+    public class UsuarioController : Controller
     {
         public async Task<string> Autenticar(string email, string senha)
         {
-            HttpContext sessaoCorrente = HttpContext.Current;
+            HttpContext sessaoCorrente = System.Web.HttpContext.Current;
             using (var client = new HttpClient())
             {
                 // Config client
@@ -67,6 +68,11 @@ namespace CirWebView.Controllers
         public ActionResult Registrar(object sender, EventArgs e)
         {
             return new RedirectResult("Default.aspx");
+        }
+
+        internal object Cadastrar(Usuario usuario)
+        {
+            throw new NotImplementedException();
         }
     }
 }

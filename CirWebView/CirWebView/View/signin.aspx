@@ -1,6 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="Master.Master" AutoEventWireup="true" CodeBehind="signin.aspx.cs" Inherits="CirWebView.View.signin1" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server"> 
-    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="../Scripts/jquery-3.1.1.min.js" type="text/javascript"></script>
     <script src="../Scripts/jquery.maskedinput.min.js" type="text/javascript"></script>
     <script type="text/javascript">
 
@@ -56,8 +56,7 @@
                                 <asp:RadioButton ID="radioCnpj" CssClass="radio-inline" runat="server" Text="CNPJ" GroupName="ChoiceCpfCnpj" OnCheckedChanged="radioCnpj_CheckedChanged" AutoPostBack="True" />
                             </div>
                             <div runat="server" class="form-group">
-								<asp:TextBox runat="server" required="" ID="cadCpf" class="form-control cpf"/>
-                                <asp:TextBox runat="server" required="" ID="cadCnpj" class="form-control cnpj" Visible="False" />
+								<asp:TextBox runat="server" required="" ID="cadCpfCnpj" CssClass="form-control cpf"/>
 							</div>
 							<div class="form-group">
 								<asp:TextBox runat="server" required="" onblur="validacaoEmail()" type="email" id="cadEmail" class="form-control" placeholder="Email"/>
@@ -70,11 +69,15 @@
 								<asp:TextBox runat="server" type="password" required="" id="cadConfSenha" class="form-control" placeholder="Confirmação de Senha"/>
 							</div>
                             <div class="form-group-lg">
-                                <asp:DropDownList CssClass="dropdown-menu-left" ID="ddlEstados" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlEstados_SelectedIndexChanged" ></asp:DropDownList>
+                                <asp:DropDownList CssClass="dropdown-menu-left" ID="ddlEstados" runat="server"  AutoPostBack="True" OnSelectedIndexChanged="ddlEstados_SelectedIndexChanged"></asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="rfvDdlEstados" runat="server" ControlToValidate="ddlEstados" InitialValue="----Selecione o Estado----" ErrorMessage="Selecione um Estado!" Display="Dynamic" class="or-separator-text" style="color:cadetblue"/>
+                                
                                 <asp:DropDownList CssClass="dropdown-menu-left" ID="ddlCidades" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCidades_SelectedIndexChanged" Visible="False"></asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="rdvDdlCidades" runat="server" ControlToValidate="ddlCidades" InitialValue="----Selecione a Cidade ----" ErrorMessage="Selecione uma Cidade!" Display="Dynamic" class="or-separator-text" style="color:cadetblue"/>
+                                
                                 <asp:Label class="or-separator-text" style="color:cadetblue" ID="lblLocal" runat="server"></asp:Label>
                             </div>
-							<button type="submit" class="btn">Confirmar</button>	
+							<asp:Button runat="server" Text="Confirmar" CssClass="btn" ID="btnCadastrar" OnClick="btnCadastrar_Click"></asp:Button>	
 						</form>
 						<!-- checkbox -->
 					</div>

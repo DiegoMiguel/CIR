@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -73,19 +74,32 @@ namespace CirWebView.View
 
         protected void radioCpf_CheckedChanged(object sender, EventArgs e)
         {
-            cadCpf.Visible = true;
-            cadCnpj.Visible = false;
+            cadCpfCnpj.CssClass = "form-control cpf";
         }
 
         protected void radioCnpj_CheckedChanged(object sender, EventArgs e)
         {
-            cadCpf.Visible = false;
-            cadCnpj.Visible = true;
+            cadCpfCnpj.CssClass = "form-control cnpj";
         }
 
         protected void ddlCidades_SelectedIndexChanged(object sender, EventArgs e)
         {
             lblLocal.Text = ddlCidades.SelectedValue + " " + ddlCidades.SelectedItem + "-" + ddlEstados.Text;
+        }
+
+        protected void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            Usuario usuario = new Usuario
+            {
+                Nome = cadNome.Text,
+                Cpf_Cnpj = cadCpfCnpj.Text,
+                Email = cadEmail.Text,
+                Senha = cadSenha.Text,
+                Cidade_id = Convert.ToInt32(ddlCidades.SelectedValue)
+            };
+
+            string statusMessenger = new UsuarioController().Cadastrar(usuario).Result;
+
         }
 
 
