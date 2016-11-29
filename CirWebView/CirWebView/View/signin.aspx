@@ -23,7 +23,7 @@
 						<h2>Acessar minha conta</h2>
 						<!-- form -->
 						<form method="post" action="signin.aspx?action=login">
-                            <label id="lblMensagem" class="or-separator-text" style="color:aquamarine"><% Response.Write(mensagem); %></label>
+                            <label id="lblMensagem" class="or-separator-text" style="color:aquamarine"><% Response.Write(_loginMessage); %></label>
 							<div class="form-group">
                                 <input type="email" name="txtEmail" required="" onblur="validacaoEmail()" class="form-control" placeholder="email@email.com" />
 							</div>
@@ -48,8 +48,8 @@
 						<h2>Ainda não tenho cadastro</h2>
 						<form runat="server">
 							<div class="form-group">
-								<asp:TextBox runat="server" required="" type="text" id="cadNome" class="form-control" placeholder="Nome" />
-							</div>
+								<asp:TextBox runat="server" required="" type="text" id="cadNome" class="form-control" placeholder="Nome"></asp:TextBox>
+                            </div>
                                 
                             <div>
                                 <asp:RadioButton ID="radioCpf" CssClass="radio-inline" runat="server" Text="CPF" GroupName="ChoiceCpfCnpj" OnCheckedChanged="radioCpf_CheckedChanged" AutoPostBack="True" Checked="True" />

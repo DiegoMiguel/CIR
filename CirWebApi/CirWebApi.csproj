@@ -256,7 +256,7 @@
     </Compile>
     <Compile Include="Models\ContextoDeAutenticacao.cs" />
     <Compile Include="Models\RepositorioDeAutenticacao.cs" />
-    <Compile Include="Models\UsuarioBase.cs" />
+    <Compile Include="Models\UsuarioModel.cs" />
     <Compile Include="Models\categoria.cs">
       <DependentUpon>CirModel.tt</DependentUpon>
     </Compile>

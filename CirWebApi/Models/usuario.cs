@@ -26,7 +26,7 @@ namespace CirWebApi.Models
         public string Nome { get; set; }
         public string CPF_CNPJ { get; set; }
         public int Cidade_id { get; set; }
-        public System.DateTime Data_Cadastro { get; set; }
+        public Nullable<System.DateTime> Data_Cadastro { get; set; }
         public string Email { get; set; }
         public string Senha { get; set; }
     

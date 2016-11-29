@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Description;
 
 namespace CirWebApi.Controllers
 {
@@ -18,8 +19,10 @@ namespace CirWebApi.Controllers
         // POST api/Contas/Registrar
         [AllowAnonymous]
         [Route("Registrar")]
-        public async Task<IHttpActionResult> Registrar(UsuarioBase novoUsuario)
-        {
+        [ResponseType(typeof(int))]
+        public async Task<IHttpActionResult> Registrar(UsuarioModel novoUsuario)
+        { // Registra nova conta
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -34,7 +37,8 @@ namespace CirWebApi.Controllers
                 return errorResult;
             }
 
-            return Ok();
+            // Cadastra novo Usuário atrelado à conta e retorna a resposta
+            return await new UsuariosController().PostUsuario(novoUsuario, ControllerContext);
         }
 
         protected override void Dispose(bool disposing)

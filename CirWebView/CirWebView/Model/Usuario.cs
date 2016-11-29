@@ -13,7 +13,7 @@ namespace CirWebView.Model
         [Required, DataType(DataType.EmailAddress)]
         public string Email { get; set; }
 
-        [Required, DataType(DataType.Password), MinLength(6)]
+        [Required][DataType(DataType.Password), MinLength(6)]
         public string Senha { get; set; }
 
         [Required]

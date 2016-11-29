@@ -12,7 +12,7 @@ namespace CirWebView.View
 {
     public partial class signin1 : System.Web.UI.Page
     {
-        protected string mensagem;
+        protected string _loginMessage;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -59,7 +59,7 @@ namespace CirWebView.View
             }
         }
 
-        private void EfetuarLogin()
+        protected void EfetuarLogin()
         {
             string email = Request.Form["txtEmail"];
             string senha = Request.Form["txtSenha"];
@@ -67,7 +67,7 @@ namespace CirWebView.View
             string statusMessenger = new UsuarioController().Autenticar(email, senha).Result;
 
             if (!statusMessenger.Equals("ok"))
-                mensagem = statusMessenger; // Problema no login!
+                _loginMessage = statusMessenger; // Problema no login!
             else
                 Server.Transfer("ad-post.aspx");
         }
@@ -98,7 +98,7 @@ namespace CirWebView.View
                 Cidade_id = Convert.ToInt32(ddlCidades.SelectedValue)
             };
 
-            string statusMessenger = new UsuarioController().Cadastrar(usuario).Result;
+            
 
         }
 
