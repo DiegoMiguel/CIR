@@ -23,7 +23,7 @@
 						<h2>Acessar minha conta</h2>
 						<!-- form -->
 						<form method="post" action="signin.aspx?action=login">
-                            <label id="lblMensagem" class="or-separator-text" style="color:aquamarine"><% Response.Write(mensagem); %></label>
+                            <label id="lblMensagem" class="or-separator-text" style="color:aquamarine"><% Response.Write(_loginMessage); %></label>
 							<div class="form-group">
                                 <input type="email" name="txtEmail" required="" onblur="validacaoEmail()" class="form-control" placeholder="email@email.com" />
 							</div>
@@ -47,9 +47,10 @@
 					<div class="user-account-cadastro">
 						<h2>Ainda não tenho cadastro</h2>
 						<form runat="server">
+                            <asp:Label class="or-separator-text" style="color:chartreuse" ID="lblError" runat="server"></asp:Label>
 							<div class="form-group">
-								<asp:TextBox runat="server" required="" type="text" id="cadNome" class="form-control" placeholder="Nome" />
-							</div>
+								<asp:TextBox runat="server" required="" type="text" id="cadNome" class="form-control" placeholder="Nome"></asp:TextBox>
+                            </div>
                                 
                             <div>
                                 <asp:RadioButton ID="radioCpf" CssClass="radio-inline" runat="server" Text="CPF" GroupName="ChoiceCpfCnpj" OnCheckedChanged="radioCpf_CheckedChanged" AutoPostBack="True" Checked="True" />
@@ -69,16 +70,28 @@
 								<asp:TextBox runat="server" type="password" required="" id="cadConfSenha" class="form-control" placeholder="Confirmação de Senha"/>
 							</div>
                             <div class="form-group-lg">
-                                <asp:DropDownList CssClass="dropdown-menu-left" ID="ddlEstados" runat="server"  AutoPostBack="True" OnSelectedIndexChanged="ddlEstados_SelectedIndexChanged"></asp:DropDownList>
+                                <asp:DropDownList class="form-group" ID="ddlEstados" runat="server"  AutoPostBack="True" OnSelectedIndexChanged="ddlEstados_SelectedIndexChanged"></asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="rfvDdlEstados" runat="server" ControlToValidate="ddlEstados" InitialValue="----Selecione o Estado----" ErrorMessage="Selecione um Estado!" Display="Dynamic" class="or-separator-text" style="color:cadetblue"/>
                                 
-                                <asp:DropDownList CssClass="dropdown-menu-left" ID="ddlCidades" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCidades_SelectedIndexChanged" Visible="False"></asp:DropDownList>
-                                <asp:RequiredFieldValidator ID="rdvDdlCidades" runat="server" ControlToValidate="ddlCidades" InitialValue="----Selecione a Cidade ----" ErrorMessage="Selecione uma Cidade!" Display="Dynamic" class="or-separator-text" style="color:cadetblue"/>
-                                
-                                <asp:Label class="or-separator-text" style="color:cadetblue" ID="lblLocal" runat="server"></asp:Label>
+                                <asp:DropDownList class="form-group" ID="ddlCidades" runat="server" Visible="False"></asp:DropDownList>
+                                <asp:RequiredFieldValidator ID="rdvDdlCidades" runat="server" ControlToValidate="ddlCidades" 
+                                    InitialValue="----Selecione a Cidade ----" ErrorMessage="Selecione uma Cidade!" Display="Dynamic" 
+                                    class="or-separator-text" style="color:cadetblue"/><br />
                             </div>
-							<asp:Button runat="server" Text="Confirmar" CssClass="btn" ID="btnCadastrar" OnClick="btnCadastrar_Click"></asp:Button>	
+							<asp:Button runat="server" Text="Confirmar" CssClass="btn" ID="btnCadastrar"
+                                OnClick="btnCadastrar_Click"></asp:Button>
 						</form>
+                        
+                        <% if(_controleErrosCadastro) { %>
+                        <p class="text-primary"><strong>Não foi possível enviar sua solicitação:</strong><br /> Corrija os erros abaixo e tente novamente.</p>
+                            <ul class="list-group">
+                                <%
+                                foreach (string modelError in _erros)
+                                {%>
+                                <li class="list-group-item"> <%= modelError %></li>
+                                 <% }%>
+                            </ul>
+                        <% } %>
 						<!-- checkbox -->
 					</div>
 				</div><!-- user-login -->			

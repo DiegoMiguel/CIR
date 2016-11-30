@@ -11,7 +11,8 @@ namespace CirWebView.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            lblSession.Text = "Token: " + Session["token"] + "\nID Usuário: " + Session["id"] + "\nNome: " + 
+                Session["nome"] + "\n ID Cidade: " + Session["cidade_id"];
         }
     }
 }

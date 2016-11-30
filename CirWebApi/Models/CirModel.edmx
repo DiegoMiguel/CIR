@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="CIRModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="CIRModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="anuncio">
           <Key>
             <PropertyRef Name="Anuncio_id" />
@@ -58,9 +58,9 @@
           <Property Name="Nome" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="CPF_CNPJ" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="Cidade_id" Type="int" Nullable="false" />
-          <Property Name="Data_Cadastro" Type="date" Nullable="false" />
+          <Property Name="Data_Cadastro" Type="datetime" />
           <Property Name="Email" Type="varchar" MaxLength="45" Nullable="false" />
-          <Property Name="Senha" Type="varchar" MaxLength="16" Nullable="false" />
+          <Property Name="Senha" Type="varchar" MaxLength="16" />
         </EntityType>
         <Association Name="FK_anunciodenuncia">
           <End Role="anuncio" Type="Self.anuncio" Multiplicity="1" />
@@ -182,8 +182,7 @@
             <End Role="preferencias" EntitySet="preferencias" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="CIRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -250,9 +249,9 @@
           <Property Name="Nome" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CPF_CNPJ" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Cidade_id" Type="Int32" Nullable="false" />
-          <Property Name="Data_Cadastro" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Data_Cadastro" Type="DateTime" Precision="3" />
           <Property Name="Email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Senha" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Senha" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="anuncios" Relationship="Self.FK_usr_anuncio" FromRole="usuarios" ToRole="anuncio" />
           <NavigationProperty Name="cidade" Relationship="Self.FK_Cidade" FromRole="usuarios" ToRole="cidades" />
           <NavigationProperty Name="denuncias" Relationship="Self.FK_usrdenuncia" FromRole="usuarios" ToRole="denuncias" />

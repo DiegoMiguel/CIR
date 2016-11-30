@@ -1,7 +1,11 @@
 ﻿using CirWebApi.Models;
 using Microsoft.AspNet.Identity;
+using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Description;
+using System.Net.Http.Formatting;
+using System.Net.Http;
 
 namespace CirWebApi.Controllers
 {
@@ -18,14 +22,16 @@ namespace CirWebApi.Controllers
         // POST api/Contas/Registrar
         [AllowAnonymous]
         [Route("Registrar")]
-        public async Task<IHttpActionResult> Registrar(UsuarioBase novoUsuario)
-        {
+        [ResponseType(typeof(int))]
+        public async Task<IHttpActionResult> Registrar(UsuarioModel novoUsuario)
+        { // Registra nova conta
+
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            IdentityResult result = await _repositorio.RegistrarUsuario(novoUsuario);
+            IdentityResult result = await _repositorio.RegistrarUsuario(novoUsuario); // Retorna erro se o email já estiver cadastrado
 
             IHttpActionResult errorResult = GetErrorResult(result);
 
@@ -34,17 +40,8 @@ namespace CirWebApi.Controllers
                 return errorResult;
             }
 
-            return Ok();
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                _repositorio.Dispose();
-            }
-
-            base.Dispose(disposing);
+            // Cadastra novo Usuário atrelado à conta e retorna a resposta
+            return await new UsuariosController().PostUsuario(novoUsuario, ControllerContext);
         }
 
         /**
@@ -70,14 +67,26 @@ namespace CirWebApi.Controllers
 
                 if (ModelState.IsValid)
                 {
-                    // No ModelState errors are available to send, so just return an empty BadRequest.
-                    return BadRequest();
+                    // No ModelState errors are available to send, so just return an empty InternalServerError.
+                    return InternalServerError();
                 }
 
-                return BadRequest(ModelState);
+                return Conflict(); // Email já cadastrado
             }
 
             return null;
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                _repositorio.Dispose();
+            }
+
+            base.Dispose(disposing);
+        }
+
+        
     }
 }

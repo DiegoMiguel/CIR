@@ -21,7 +21,7 @@ namespace CirWebApi.Models
             _gerenciaDeUser = new UserManager<IdentityUser>(new UserStore<IdentityUser>(_contexto));
         }
 
-        public async Task<IdentityResult> RegistrarUsuario(UsuarioBase novoUsuario)
+        public async Task<IdentityResult> RegistrarUsuario(UsuarioModel novoUsuario)
         {
             IdentityUser usuario = new IdentityUser
             {
@@ -29,9 +29,9 @@ namespace CirWebApi.Models
                 Email = novoUsuario.EMAIL
             };
 
-            var result = await _gerenciaDeUser.CreateAsync(usuario, novoUsuario.SENHA);
+            var result = _gerenciaDeUser.CreateAsync(usuario, novoUsuario.SENHA);
 
-            return result;
+            return await result;
         }
         public async Task<IdentityUser> FindUser(string email, string password)
         {

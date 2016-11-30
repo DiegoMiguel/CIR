@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using CirWebApi.Models;
+using System.Web.Http.Results;
+using System.Web.Http.Controllers;
 
 namespace CirWebApi.Controllers
 {
@@ -19,9 +21,9 @@ namespace CirWebApi.Controllers
 
         public async Task<IHttpActionResult> Autenticar(string email, string senha)
         {
-            UsuarioBase autenticado = db.usuarios
+            UsuarioModel autenticado = db.usuarios
                 .Where(u => u.Email.Equals(email) && u.Senha.Equals(senha))
-                .Select(u => new UsuarioBase
+                .Select(u => new UsuarioModel
                 {
                     ID = u.Usuario_id,
                     NOME = u.Nome,
@@ -37,7 +39,7 @@ namespace CirWebApi.Controllers
         // GET: api/Usuarios
         public IQueryable<usuario> Getusuarios()
         {
-            return db.usuarios;
+            return db.usuarios ;
         }
 
         // GET: api/Usuarios/5
@@ -89,18 +91,25 @@ namespace CirWebApi.Controllers
         }
 
         // POST: api/Usuarios
-        [ResponseType(typeof(usuario))]
-        public async Task<IHttpActionResult> Postusuario(usuario usuario)
+        [AllowAnonymous]
+        [ResponseType(typeof(int))]
+        public async Task<IHttpActionResult> PostUsuario(UsuarioModel usuario, HttpControllerContext contextoDaRequisicao)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
+            // Como a requisicao é repassada para cá, o UsuariosController reaproveita as configurações recebidas
+            // pelo ContasController
+            ControllerContext = contextoDaRequisicao;
 
-            db.usuarios.Add(usuario);
+            db.usuarios.Add(new usuario()
+            {
+                Nome = usuario.NOME,            // O dbContext cria uma representacao do usuario no banco de dados
+                CPF_CNPJ = usuario.CPF_CNPJ,    // aqui, estamos repassando o modelo recebido para esse formato
+                Email = usuario.EMAIL,          // que será usado para a persistência
+                Cidade_id = usuario.CIDADE_ID
+            });
+
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = usuario.Usuario_id }, usuario);
+            return Ok(db.usuarios.OrderByDescending(user => user.Usuario_id).AsEnumerable().First().Usuario_id);
         }
 
         // DELETE: api/Usuarios/5

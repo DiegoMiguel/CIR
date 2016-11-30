@@ -13,6 +13,15 @@ namespace CirWebView.View {
     public partial class signin1 {
         
         /// <summary>
+        /// Controle lblError.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError;
+        
+        /// <summary>
         /// Controle cadNome.
         /// </summary>
         /// <remarks>
@@ -119,15 +128,6 @@ namespace CirWebView.View {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rdvDdlCidades;
-        
-        /// <summary>
-        /// Controle lblLocal.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLocal;
         
         /// <summary>
         /// Controle btnCadastrar.
