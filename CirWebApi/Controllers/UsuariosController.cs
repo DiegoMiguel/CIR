@@ -39,7 +39,7 @@ namespace CirWebApi.Controllers
         // GET: api/Usuarios
         public IQueryable<usuario> Getusuarios()
         {
-            return db.usuarios;
+            return db.usuarios ;
         }
 
         // GET: api/Usuarios/5
@@ -99,17 +99,17 @@ namespace CirWebApi.Controllers
             // pelo ContasController
             ControllerContext = contextoDaRequisicao;
 
-            int idUsuarioSalvo = db.usuarios.Add(new usuario()
+            db.usuarios.Add(new usuario()
             {
                 Nome = usuario.NOME,            // O dbContext cria uma representacao do usuario no banco de dados
                 CPF_CNPJ = usuario.CPF_CNPJ,    // aqui, estamos repassando o modelo recebido para esse formato
                 Email = usuario.EMAIL,          // que será usado para a persistência
                 Cidade_id = usuario.CIDADE_ID
-            }).Usuario_id;
+            });
 
             await db.SaveChangesAsync();
 
-            return Ok();
+            return Ok(db.usuarios.OrderByDescending(user => user.Usuario_id).AsEnumerable().First().Usuario_id);
         }
 
         // DELETE: api/Usuarios/5

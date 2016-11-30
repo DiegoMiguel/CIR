@@ -10,7 +10,7 @@ namespace CirWebApi.Models
     {
         public int ID { get; set; }
 
-        [Required, MinLength(2)]
+        [MinLength(2, ErrorMessage = "Nome inválido!")]
         public string NOME { get; set; }
 
         [Required]
@@ -23,7 +23,6 @@ namespace CirWebApi.Models
         [DataType(DataType.EmailAddress)]
         public string EMAIL { get; set; }
 
-        [Required]
         [StringLength(100, ErrorMessage = "A {0} deve conter ao menos {2} caracteres!", MinimumLength = 6)]
         [DataType(DataType.Password)]
         [Display(Name = "Senha")]

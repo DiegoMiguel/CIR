@@ -13,6 +13,8 @@
 					<li>Anuncie</li>
 				</ol><!-- breadcrumb -->						
 				<h2 class="title">Anuncie grátis</h2>
+
+                <asp:Label runat="server" id="lblSession" class="or-separator-text" style="color:chartreuse"/>
 			</div><!-- banner -->
 
 				
