@@ -51,17 +51,17 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="index.html"><img class="img-responsive" src="images/logo.png" alt="Logo"/></a>
+					<a class="navbar-brand" href="Default.aspx"><img class="img-responsive" src="images/logo.png" alt="Logo"/></a>
 				</div>
 				<!-- /navbar-header -->
 				
 				<div class="navbar-left">
 					<div class="collapse navbar-collapse" id="navbar-collapse">
 						<ul class="nav navbar-nav">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="categories.html">Anúncios</a></li>
-							<li><a href="Chat.html">Chat</a></li> 
-							<li><a href="faq.html">Ajuda</a></li> 
+							<li><a href="Default.aspx">Home</a></li>
+							<li><a href="View/categories.aspx">Anúncios</a></li>
+							<!--<li><a href="View/Chat.aspx">Chat</a></li>--> 
+							<li><a href="View/faq.aspx">Ajuda</a></li> 
 						</ul>
 					</div>
 				</div>
@@ -72,7 +72,7 @@
 
 					<!-- sign-in -->					
 					<ul class="sign-in">
-						<li><a href="my-profile.html"/><i class="fa fa-user"></i></li>
+						<li><a href="View/my-profile.aspx"/><i class="fa fa-user"></i></li>
 						<li><a href="View/signin.aspx"/>Login </a></li>
        				</ul><!-- sign-in -->					
 
@@ -135,7 +135,7 @@
 						<div class="section cta text-center">
 							<ul class="category-list">	
 								<li class="category-item">
-									<a href="categories.html">
+									<a href="View/categories.aspx">
 										<div class="category-icon"><img src="images/icon/5.png" alt="images" class="img-responsive"></div>
 										<span class="category-title">Papéis</span>
 										<span class="category-quantity">(1298)</span>
@@ -143,7 +143,7 @@
 								</li><!-- category-item -->
 								
 								<li class="category-item">
-									<a href="categories.html">
+									<a href="View/categories.aspx">
 										<div class="category-icon"><img src="images/icon/3.png" alt="images" class="img-responsive"></div>
 										<span class="category-title">Plásticos</span>
 										<span class="category-quantity">(76212)</span>
@@ -151,7 +151,7 @@
 								</li><!-- category-item -->
 								
 								<li class="category-item">
-									<a href="categories.html">
+									<a href="View/categories.aspx">
 										<div class="category-icon"><img src="images/icon/2.png" alt="images" class="img-responsive"></div>
 										<span class="category-title">Vidros</span>
 										<span class="category-quantity">(212)</span>
@@ -159,7 +159,7 @@
 								</li><!-- category-item -->
 								
 								<li class="category-item">
-									<a href="categories.html">
+									<a href="View/categories.aspx">
 										<div class="category-icon"><img src="images/icon/4.png" alt="images" class="img-responsive"></div>
 										<span class="category-title">Eletrônicos</span>
 										<span class="category-quantity">(972)</span>
@@ -167,7 +167,7 @@
 								</li><!-- category-item -->
 								
 								<li class="category-item">
-									<a href="categories.html">
+									<a href="View/categories.aspx">
 										<div class="category-icon"><img src="images/icon/1.png" alt="images" class="img-responsive"></div>
 										<span class="category-title">Latas</span>
 										<span class="category-quantity">(1298)</span>
@@ -193,15 +193,15 @@
 									<!-- featured -->
 									<div class="featured">
 										<div class="featured-image">
-											<a href="signin.html"><img src="images/featured/1.jpg" alt="" class="img-respocive"></a>
+											<a href="View/details.aspx"><img src="images/featured/1.jpg" alt="" class="img-respocive"></a>
 										</div>
 										
 										<!-- ad-info -->
 										<div class="ad-info">
 											<h3 class="item-price">R$80,00</h3>
-											<h4 class="item-title"><a href="signin.html">Latinhas de refrigerante</a></h4>
+											<h4 class="item-title"><a href="View/details.aspx">Latinhas de refrigerante</a></h4>
 											<div class="item-cat">
-												<span><a href="signin.html">Latas</a></span> 
+												<span><a href="View/details.aspx">Latas</a></span> 
 											</div>
 										</div><!-- ad-info -->
 										
@@ -220,22 +220,22 @@
 									
 									<div class="featured">
 										<div class="featured-image">
-											<a href="signin.html"><img src="images/featured/2.jpg" alt="" class="img-respocive"></a>
+											<a href="View/details.aspx"><img src="images/featured/2.jpg" alt="" class="img-respocive"></a>
 										</div>
 										
 										<!-- ad-info -->
 										<div class="ad-info">
 											<h3 class="item-price">R$250,00</h3>
-											<h4 class="item-title"><a href="signin.html">Garrafas PET variadas</a></h4>
+											<h4 class="item-title"><a href="View/details.aspx">Garrafas PET variadas</a></h4>
 											<div class="item-cat">
-												<span><a href="signin.html">Plásticos</a></span> 
+												<span><a href="View/details.aspx">Plásticos</a></span> 
 											</div>
 										</div><!-- ad-info -->
 										
 										<!-- ad-meta -->
 										<div class="ad-meta">
 											<div class="meta-content">
-												<span class="dated"><a href="signin.html">21/10/2016 12:01</a></span>
+												<span class="dated"><a href="View/details.aspx">21/10/2016 12:01</a></span>
 											</div>									
 											<!-- item-info-right -->
 											<div class="user-option pull-right">
@@ -247,23 +247,23 @@
 									
 									<div class="featured">
 										<div class="featured-image">
-											<a href="signin.html"><img src="images/featured/3.jpg" alt="" class="img-respocive"></a>
+											<a href="View/details.aspx"><img src="images/featured/3.jpg" alt="" class="img-respocive"></a>
 										</div>
 										
 										<!-- ad-info -->
 										<!-- ad-info -->
 										<div class="ad-info">
 											<h3 class="item-price">R$2500,00 <span class="Negociável">(Negociável)</span></h3>
-											<h4 class="item-title"><a href="signin.html">Monte de pneus para reciclagem</a></h4>
+											<h4 class="item-title"><a href="View/details.aspx">Monte de pneus para reciclagem</a></h4>
 											<div class="item-cat">
-												<span><a href="signin.html">Outros</a></span> 
+												<span><a href="View/details.aspx">Outros</a></span> 
 											</div>
 										</div><!-- ad-info -->
 										
 										<!-- ad-meta -->
 										<div class="ad-meta">
 											<div class="meta-content">
-												<span class="dated"><a href="signin.html">12/09/2016 15:14</a></span>
+												<span class="dated"><a href="View/details.aspx">12/09/2016 15:14</a></span>
 											</div>									
 											<!-- item-info-right -->
 											<div class="user-option pull-right">
@@ -274,22 +274,22 @@
 									</div><!-- featured -->
 									<div class="featured">
 										<div class="featured-image">
-											<a href="details.html"><img src="images/trending/4.jpg" alt="" class="img-respocive"></a>
+											<a href="View/details.aspx"><img src="images/trending/4.jpg" alt="" class="img-respocive"></a>
 										</div>
 										
 										<!-- ad-info -->
 										<div class="ad-info">
 											<h3 class="item-price">R$15,00</h3>
-											<h4 class="item-title"><a href="signin.html">Garrafas de vidro</a></h4>
+											<h4 class="item-title"><a href="View/details.aspx">Garrafas de vidro</a></h4>
 											<div class="item-cat">
-												<span><a href="signin.html">Vidros</a></span> 
+												<span><a href="View/details.aspx">Vidros</a></span> 
 											</div>
 										</div><!-- ad-info -->
 										
 										<!-- ad-meta -->
 										<div class="ad-meta">
 											<div class="meta-content">
-												<span class="dated"><a href="signin.html">14/08/2016 09:55</a></span>
+												<span class="dated"><a href="#">14/08/2016 09:55</a></span>
 											</div>									
 											<!-- item-info-right -->
 											<div class="user-option pull-right">
@@ -301,7 +301,7 @@
 									
 									<div class="featured">
 										<div class="featured-image">
-											<a href="signin.html"><img src="images/trending/3.jpg" alt="" class="img-respocive"></a>
+											<a href="View/details.aspx"><img src="images/trending/3.jpg" alt="" class="img-respocive"></a>
 										</div>
 										
 										<!-- ad-info -->
@@ -309,7 +309,7 @@
 											<h3 class="item-price">R$50,00</h3>
 											<h4 class="item-title"><a href="#">Fardo de Plásticos</a></h4>
 											<div class="item-cat">
-												<span><a href="signin.html">Plásticos</a></span> 
+												<span><a href="View/details.aspx">Plásticos</a></span> 
 											</div>
 										</div><!-- ad-info -->
 										
@@ -351,7 +351,7 @@
 										<!-- item-image -->
 										<div class="item-image-box col-sm-4">
 											<div class="item-image">
-												<a href="signin.html"><img src="images/trending/1.jpg" alt="Image" class="img-responsive"></a>
+												<a href="View/details.aspx"><img src="images/trending/1.jpg" alt="Image" class="img-responsive"></a>
 											</div><!-- item-image -->
 										</div>
 										
@@ -360,10 +360,10 @@
 											<!-- ad-info -->
 											<div class="ad-info">
 												<h3 class="item-price">R$50,00</h3>
-												<h4 class="item-title"><a href="signin.html">TV antigas</a></h4>
+												<h4 class="item-title"><a href="View/details.aspx">TV antigas</a></h4>
 												<div class="item-cat">
-													<span><a href="signin.html">Eletrônicos</a></span> /
-													<span><a href="signin.html">Tv & Rádio</a></span>
+													<span><a href="View/details.aspx">Eletrônicos</a></span> /
+													<span><a href="View/details.aspx">Tv & Rádio</a></span>
 												</div>	
 											</div><!-- ad-info -->
 											
@@ -387,7 +387,7 @@
 										<div class="item-image-box col-sm-4">
 											<!-- item-image -->
 											<div class="item-image">
-												<a href="signin.html"><img src="images/trending/2.jpg" alt="Image" class="img-responsive"></a>
+												<a href="View/details.aspx"><img src="images/trending/2.jpg" alt="Image" class="img-responsive"></a>
 											</div><!-- item-image -->
 										</div><!-- item-image-box -->
 										
@@ -396,10 +396,10 @@
 											<!-- ad-info -->
 											<div class="ad-info">
 												<h3 class="item-price">R$15.00 <span>(Negociável)</span></h3>
-												<h4 class="item-title"><a href="signin.html">Joarnais antigos</a></h4>
+												<h4 class="item-title"><a href="View/details.aspx">Joarnais antigos</a></h4>
 												<div class="item-cat">
-													<span><a href="signin.html">Papéis</a></span> /
-													<span><a href="signin.html">Joarnais & Revistas</a></span>
+													<span><a href="View/details.aspx">Papéis</a></span> /
+													<span><a href="View/details.aspx">Joarnais & Revistas</a></span>
 												</div>										
 											</div><!-- ad-info -->
 											
@@ -423,7 +423,7 @@
 										<div class="item-image-box col-sm-4">
 											<!-- item-image -->
 											<div class="item-image">
-												<a href="signin.html"><img src="images/trending/4.jpg" alt="Image" class="img-responsive"></a>
+												<a href="View/details.aspx"><img src="images/trending/4.jpg" alt="Image" class="img-responsive"></a>
 											</div><!-- item-image -->
 										</div><!-- item-image-box -->
 										
@@ -432,10 +432,10 @@
 											<!-- ad-info -->
 											<div class="ad-info">
 												<h3 class="item-price">R$1,00</h3>
-												<h4 class="item-title"><a href="signin.html">Garrafas de Vidro</a></h4>
+												<h4 class="item-title"><a href="View/details.aspx">Garrafas de Vidro</a></h4>
 												<div class="item-cat">
-													<span><a href="signin.html">Vidros</a></span> /
-													<span><a href="signin.html">Garrafas</a></span>
+													<span><a href="View/details.aspx">Vidros</a></span> /
+													<span><a href="View/details.aspx">Garrafas</a></span>
 												</div>										
 											</div><!-- ad-info -->
 											
@@ -459,7 +459,7 @@
 										<div class="item-image-box col-sm-4">
 											<!-- item-image -->
 											<div class="item-image">
-												<a href="signin.html"><img src="images/trending/3.jpg" alt="Image" class="img-responsive"></a>
+												<a href="View/details.aspx"><img src="images/trending/3.jpg" alt="Image" class="img-responsive"></a>
 											</div><!-- item-image -->
 										</div><!-- item-image-box -->
 										
@@ -468,10 +468,10 @@
 											<!-- ad-info -->
 											<div class="ad-info">
 												<h3 class="item-price">R$50.00 <span>(Negociável)</span></h3>
-												<h4 class="item-title"><a href="signin.html">Fardo de Plastico</a></h4>
+												<h4 class="item-title"><a href="View/details.aspx">Fardo de Plastico</a></h4>
 												<div class="item-cat">
-													<span><a href="signin.html">Plásticos</a></span> /
-													<span><a href="signin.html">Sacos & Sacolas</a></span>
+													<span><a href="View/details.aspx">Plásticos</a></span> /
+													<span><a href="View/details.aspx">Sacos & Sacolas</a></span>
 												</div>	
 											</div><!-- ad-info -->											
 											
@@ -500,7 +500,7 @@
 										<!-- item-image -->
 										<div class="item-image-box col-sm-4">
 											<div class="item-image">
-												<a href="signin.html"><img src="images/trending/1.jpg" alt="Image" class="img-responsive"></a>
+												<a href="View/details.aspx"><img src="images/trending/1.jpg" alt="Image" class="img-responsive"></a>
 											</div><!-- item-image -->
 										</div>
 										
@@ -509,10 +509,10 @@
 											<!-- ad-info -->
 											<div class="ad-info">
 												<h3 class="item-price">R$50,00</h3>
-												<h4 class="item-title"><a href="signin.html">TV antigas</a></h4>
+												<h4 class="item-title"><a href="View/details.aspx">TV antigas</a></h4>
 												<div class="item-cat">
-													<span><a href="signin.html">Eletrônicos</a></span> /
-													<span><a href="signin.html">Tv & Rádio</a></span>
+													<span><a href="View/details.aspx">Eletrônicos</a></span> /
+													<span><a href="View/details.aspx">Tv & Rádio</a></span>
 												</div>	
 											</div><!-- ad-info -->
 											
@@ -536,7 +536,7 @@
 										<div class="item-image-box col-sm-4">
 											<!-- item-image -->
 											<div class="item-image">
-												<a href="signin.html"><img src="images/trending/2.jpg" alt="Image" class="img-responsive"></a>
+												<a href="View/details.aspx"><img src="images/trending/2.jpg" alt="Image" class="img-responsive"></a>
 											</div><!-- item-image -->
 										</div><!-- item-image-box -->
 										
@@ -547,8 +547,8 @@
 												<h3 class="item-price">R$15.00 <span>(Negociável)</span></h3>
 												<h4 class="item-title"><a href="#">Joarnais antigos</a></h4>
 												<div class="item-cat">
-													<span><a href="signin.html">Papéis</a></span> /
-													<span><a href="signin.html">Joarnais & Revistas</a></span>
+													<span><a href="View/details.aspx">Papéis</a></span> /
+													<span><a href="View/details.aspx">Joarnais & Revistas</a></span>
 												</div>										
 											</div><!-- ad-info -->
 											
@@ -572,7 +572,7 @@
 										<div class="item-image-box col-sm-4">
 											<!-- item-image -->
 											<div class="item-image">
-												<a href="signin.html"><img src="images/trending/4.jpg" alt="Image" class="img-responsive"></a>
+												<a href="View/details.aspx"><img src="images/trending/4.jpg" alt="Image" class="img-responsive"></a>
 											</div><!-- item-image -->
 										</div><!-- item-image-box -->
 										
@@ -581,10 +581,10 @@
 											<!-- ad-info -->
 											<div class="ad-info">
 												<h3 class="item-price">R$1,00</h3>
-												<h4 class="item-title"><a href="signin.html">Garrafas de Vidro</a></h4>
+												<h4 class="item-title"><a href="View/details.aspx">Garrafas de Vidro</a></h4>
 												<div class="item-cat">
-													<span><a href="signin.html">Vidros</a></span> /
-													<span><a href="signin.html">Garrafas</a></span>
+													<span><a href="View/details.aspx">Vidros</a></span> /
+													<span><a href="View/details.aspx">Garrafas</a></span>
 												</div>										
 											</div><!-- ad-info -->
 											
@@ -608,7 +608,7 @@
 										<div class="item-image-box col-sm-4">
 											<!-- item-image -->
 											<div class="item-image">
-												<a href="signin.html"><img src="images/trending/3.jpg" alt="Image" class="img-responsive"></a>
+												<a href="View/details.aspx"><img src="images/trending/3.jpg" alt="Image" class="img-responsive"></a>
 											</div><!-- item-image -->
 										</div><!-- item-image-box -->
 										
@@ -617,10 +617,10 @@
 											<!-- ad-info -->
 											<div class="ad-info">
 												<h3 class="item-price">R$50.00 <span>(Negociável)</span></h3>
-												<h4 class="item-title"><a href="signin.html">Fardo de Plastico</a></h4>
+												<h4 class="item-title"><a href="View/details.aspx">Fardo de Plastico</a></h4>
 												<div class="item-cat">
-													<span><a href="signin.html">Plásticos</a></span> /
-													<span><a href="signin.html">Sacos & Sacolas</a></span>
+													<span><a href="View/details.aspx">Plásticos</a></span> /
+													<span><a href="View/details.aspx">Sacos & Sacolas</a></span>
 												</div>	
 											</div><!-- ad-info -->											
 											
@@ -647,7 +647,7 @@
 										<!-- item-image -->
 										<div class="item-image-box col-sm-4">
 											<div class="item-image">
-												<a href="signin.html"><img src="images/trending/1.jpg" alt="Image" class="img-responsive"></a>
+												<a href="View/details.aspx"><img src="images/trending/1.jpg" alt="Image" class="img-responsive"></a>
 											</div><!-- item-image -->
 										</div>
 										
@@ -656,10 +656,10 @@
 											<!-- ad-info -->
 											<div class="ad-info">
 												<h3 class="item-price">R$50,00</h3>
-												<h4 class="item-title"><a href="signin.html">TV antigas</a></h4>
+												<h4 class="item-title"><a href="View/details.aspx">TV antigas</a></h4>
 												<div class="item-cat">
-													<span><a href="signin.html">Eletrônicos</a></span> /
-													<span><a href="signin.html">Tv & Rádio</a></span>
+													<span><a href="View/details.aspx">Eletrônicos</a></span> /
+													<span><a href="View/details.aspx">Tv & Rádio</a></span>
 												</div>	
 											</div><!-- ad-info -->
 											
@@ -683,7 +683,7 @@
 										<div class="item-image-box col-sm-4">
 											<!-- item-image -->
 											<div class="item-image">
-												<a href="signin.html"><img src="images/trending/2.jpg" alt="Image" class="img-responsive"></a>
+												<a href="View/details.aspx"><img src="images/trending/2.jpg" alt="Image" class="img-responsive"></a>
 											</div><!-- item-image -->
 										</div><!-- item-image-box -->
 										
@@ -692,10 +692,10 @@
 											<!-- ad-info -->
 											<div class="ad-info">
 												<h3 class="item-price">R$15.00 <span>(Negociável)</span></h3>
-												<h4 class="item-title"><a href="signin.html">Joarnais antigos</a></h4>
+												<h4 class="item-title"><a href="View/details.aspx">Joarnais antigos</a></h4>
 												<div class="item-cat">
-													<span><a href="signin.html">Papéis</a></span> /
-													<span><a href="signin.html">Joarnais & Revistas</a></span>
+													<span><a href="View/details.aspx">Papéis</a></span> /
+													<span><a href="View/details.aspx">Joarnais & Revistas</a></span>
 												</div>										
 											</div><!-- ad-info -->
 											
@@ -719,7 +719,7 @@
 										<div class="item-image-box col-sm-4">
 											<!-- item-image -->
 											<div class="item-image">
-												<a href="signin.html"><img src="images/trending/4.jpg" alt="Image" class="img-responsive"></a>
+												<a href="View/details.aspx"><img src="images/trending/4.jpg" alt="Image" class="img-responsive"></a>
 											</div><!-- item-image -->
 										</div><!-- item-image-box -->
 										
@@ -730,8 +730,8 @@
 												<h3 class="item-price">R$1,00</h3>
 												<h4 class="item-title"><a href="#">Garrafas de Vidro</a></h4>
 												<div class="item-cat">
-													<span><a href="signin.html">Vidros</a></span> /
-													<span><a href="signin.html">Garrafas</a></span>
+													<span><a href="View/details.aspx">Vidros</a></span> /
+													<span><a href="View/details.aspx">Garrafas</a></span>
 												</div>										
 											</div><!-- ad-info -->
 											
@@ -755,7 +755,7 @@
 										<div class="item-image-box col-sm-4">
 											<!-- item-image -->
 											<div class="item-image">
-												<a href="signin.html"><img src="images/trending/3.jpg" alt="Image" class="img-responsive"></a>
+												<a href="View/details.aspx"><img src="images/trending/3.jpg" alt="Image" class="img-responsive"></a>
 											</div><!-- item-image -->
 										</div><!-- item-image-box -->
 										
@@ -764,10 +764,10 @@
 											<!-- ad-info -->
 											<div class="ad-info">
 												<h3 class="item-price">R$50.00 <span>(Negociável)</span></h3>
-												<h4 class="item-title"><a href="signin.html">Fardo de Plastico</a></h4>
+												<h4 class="item-title"><a href="View/details.aspx">Fardo de Plastico</a></h4>
 												<div class="item-cat">
-													<span><a href="signin.html">Plásticos</a></span> /
-													<span><a href="signin.html">Sacos & Sacolas</a></span>
+													<span><a href="View/details.aspx">Plásticos</a></span> /
+													<span><a href="View/details.aspx">Sacos & Sacolas</a></span>
 												</div>	
 											</div><!-- ad-info -->											
 											

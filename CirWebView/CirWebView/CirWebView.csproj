@@ -144,7 +144,22 @@
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
     <Content Include="Scripts\jquery.maskedinput.js" />
     <Content Include="Scripts\jquery.maskedinput.min.js" />
+    <Content Include="View\404-page.aspx" />
+    <Content Include="View\500-page.aspx" />
+    <Content Include="View\account-deleted.aspx" />
+    <Content Include="View\ad-post-details.aspx" />
     <Content Include="View\ad-post.aspx" />
+    <Content Include="View\archived-ads.aspx" />
+    <Content Include="View\categories.aspx" />
+    <Content Include="View\contact-us.aspx" />
+    <Content Include="View\delete-account.aspx" />
+    <Content Include="View\details.aspx" />
+    <Content Include="View\faq.aspx" />
+    <Content Include="View\favourite-ads.aspx" />
+    <Content Include="View\my-ads.aspx" />
+    <Content Include="View\my-profile.aspx" />
+    <Content Include="View\pending-ads.aspx" />
+    <Content Include="View\published.aspx" />
     <Content Include="View\signin.aspx" />
     <Content Include="images\1.png" />
     <Content Include="images\about-us\1.jpg" />
@@ -275,6 +290,34 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Model\Usuario.cs" />
+    <Compile Include="View\404-page.aspx.cs">
+      <DependentUpon>404-page.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\404-page.aspx.designer.cs">
+      <DependentUpon>404-page.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\500-page.aspx.cs">
+      <DependentUpon>500-page.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\500-page.aspx.designer.cs">
+      <DependentUpon>500-page.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\account-deleted.aspx.cs">
+      <DependentUpon>account-deleted.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\account-deleted.aspx.designer.cs">
+      <DependentUpon>account-deleted.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\ad-post-details.aspx.cs">
+      <DependentUpon>ad-post-details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\ad-post-details.aspx.designer.cs">
+      <DependentUpon>ad-post-details.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\ad-post.aspx.cs">
       <DependentUpon>ad-post.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -282,12 +325,89 @@
     <Compile Include="View\ad-post.aspx.designer.cs">
       <DependentUpon>ad-post.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\archived-ads.aspx.cs">
+      <DependentUpon>archived-ads.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\archived-ads.aspx.designer.cs">
+      <DependentUpon>archived-ads.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\categories.aspx.cs">
+      <DependentUpon>categories.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\categories.aspx.designer.cs">
+      <DependentUpon>categories.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\contact-us.aspx.cs">
+      <DependentUpon>contact-us.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\contact-us.aspx.designer.cs">
+      <DependentUpon>contact-us.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\delete-account.aspx.cs">
+      <DependentUpon>delete-account.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\delete-account.aspx.designer.cs">
+      <DependentUpon>delete-account.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\details.aspx.cs">
+      <DependentUpon>details.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\details.aspx.designer.cs">
+      <DependentUpon>details.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\faq.aspx.cs">
+      <DependentUpon>faq.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\faq.aspx.designer.cs">
+      <DependentUpon>faq.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\favourite-ads.aspx.cs">
+      <DependentUpon>favourite-ads.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\favourite-ads.aspx.designer.cs">
+      <DependentUpon>favourite-ads.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Master.Master.cs">
       <DependentUpon>Master.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="View\Master.Master.designer.cs">
       <DependentUpon>Master.Master</DependentUpon>
+    </Compile>
+    <Compile Include="View\my-ads.aspx.cs">
+      <DependentUpon>my-ads.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\my-ads.aspx.designer.cs">
+      <DependentUpon>my-ads.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\my-profile.aspx.cs">
+      <DependentUpon>my-profile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\my-profile.aspx.designer.cs">
+      <DependentUpon>my-profile.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\pending-ads.aspx.cs">
+      <DependentUpon>pending-ads.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\pending-ads.aspx.designer.cs">
+      <DependentUpon>pending-ads.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\published.aspx.cs">
+      <DependentUpon>published.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\published.aspx.designer.cs">
+      <DependentUpon>published.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\signin.aspx.cs">
       <DependentUpon>signin.aspx</DependentUpon>

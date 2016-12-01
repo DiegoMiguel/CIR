@@ -72,10 +72,10 @@
 				<div class="navbar-left">
 					<div class="collapse navbar-collapse" id="navbar-collapse">
 						<ul class="nav navbar-nav">
-							<li><a href="index.html">Home</a></li>
-							<li><a href="categories.html">Anúncios</a></li>
-							<li><a href="Chat.html">Chat</a></li> 
-							<li><a href="faq.html">Ajuda</a></li> 
+							<li><a href="../Default.aspx">Home</a></li>
+							<li><a href="categories.aspx">Anúncios</a></li>
+							<!--<li><a href="Chat.aspx">Chat</a></li>--> 
+							<li><a href="faq.aspx">Ajuda</a></li> 
 						</ul>
 					</div>
 				</div>
@@ -83,7 +83,7 @@
 				<div class="nav-right">
 					<!-- sign-in -->					
 					<ul class="sign-in">
-						<li><a href="my-profile.html"/><i class="fa fa-user"></i></li>
+						<li><a href="my-profile.aspx"/><i class="fa fa-user"></i></li>
 						<li><a href="View/signin.aspx">Login </a></li>
 					</ul><!-- sign-in -->					
 
