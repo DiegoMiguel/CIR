@@ -51,9 +51,9 @@
 								<asp:TextBox runat="server" required="" type="text" id="cadNome" class="form-control" placeholder="Nome"></asp:TextBox>
                             </div>
                                 
-                            <div>
-                                <asp:RadioButton ID="radioCpf" CssClass="radio-inline" runat="server" Text="CPF" GroupName="ChoiceCpfCnpj" OnCheckedChanged="radioCpf_CheckedChanged" AutoPostBack="True" Checked="True" />
-                                <asp:RadioButton ID="radioCnpj" CssClass="radio-inline" runat="server" Text="CNPJ" GroupName="ChoiceCpfCnpj" OnCheckedChanged="radioCnpj_CheckedChanged" AutoPostBack="True" />
+                            <div class="form-group">
+                                <asp:RadioButton ID="radioCpf" CssClass="radio-inline" class="form-control" runat="server" Text="CPF" GroupName="ChoiceCpfCnpj" OnCheckedChanged="radioCpf_CheckedChanged" AutoPostBack="True" Checked="True" />
+                                <asp:RadioButton ID="radioCnpj" CssClass="radio-inline" class="form-control" runat="server" Text="CNPJ" GroupName="ChoiceCpfCnpj" OnCheckedChanged="radioCnpj_CheckedChanged" AutoPostBack="True" />
                             </div>
                             <div runat="server" class="form-group">
 								<asp:TextBox runat="server" required="" ID="cadCpfCnpj" CssClass="form-control cpf"/>
@@ -68,11 +68,11 @@
 								<asp:CompareValidator class="or-separator-text" style="color:cadetblue" ID="CompareValidator1" runat="server" ControlToCompare="cadSenha" ControlToValidate="cadConfSenha" Display="Dynamic" ErrorMessage="Senhas não conferem" SetFocusOnError="True"></asp:CompareValidator>
 								<asp:TextBox runat="server" type="password" required="" id="cadConfSenha" class="form-control" placeholder="Confirmação de Senha"/>
 							</div>
-                            <div class="form-group-lg">
-                                <asp:DropDownList CssClass="dropdown-menu-left" ID="ddlEstados" runat="server"  AutoPostBack="True" OnSelectedIndexChanged="ddlEstados_SelectedIndexChanged"></asp:DropDownList>
+                            <div class="form-group">
+                                <asp:DropDownList ID="ddlEstados" class="form-control"  runat="server"  AutoPostBack="True" OnSelectedIndexChanged="ddlEstados_SelectedIndexChanged"></asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="rfvDdlEstados" runat="server" ControlToValidate="ddlEstados" InitialValue="----Selecione o Estado----" ErrorMessage="Selecione um Estado!" Display="Dynamic" class="or-separator-text" style="color:cadetblue"/>
                                 
-                                <asp:DropDownList CssClass="dropdown-menu-left" ID="ddlCidades" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCidades_SelectedIndexChanged" Visible="False"></asp:DropDownList>
+                                <asp:DropDownList ID="ddlCidades" class="form-control" runat="server" AutoPostBack="True" OnSelectedIndexChanged="ddlCidades_SelectedIndexChanged" Visible="False"></asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="rdvDdlCidades" runat="server" ControlToValidate="ddlCidades" InitialValue="----Selecione a Cidade ----" ErrorMessage="Selecione uma Cidade!" Display="Dynamic" class="or-separator-text" style="color:cadetblue"/>
                                 
                                 <asp:Label class="or-separator-text" style="color:cadetblue" ID="lblLocal" runat="server"></asp:Label>
