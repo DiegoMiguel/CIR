@@ -7,11 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CirWebView.View
+namespace CirWebView.erro
 {
 
 
-    public partial class _404_page
+    public partial class _404_page2
     {
     }
 }

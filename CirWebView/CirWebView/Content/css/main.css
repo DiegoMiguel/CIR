@@ -464,7 +464,7 @@ textarea {
 }
 
 .banner-form button.form-control {
-	position:absolute;
+	position:relative;
 	right:-2px;
 	bottom:-1px;
 	max-width: 114px;

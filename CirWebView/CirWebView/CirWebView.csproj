@@ -138,13 +138,13 @@
     <Content Include="Content\fonts\icofont4d84.svg" />
     <Content Include="Default.aspx" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="erro\erro-page.aspx" />
     <Content Include="Scripts\jquery-3.1.1.js" />
     <Content Include="Scripts\jquery-3.1.1.min.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.js" />
     <Content Include="Scripts\jquery-3.1.1.slim.min.js" />
     <Content Include="Scripts\jquery.maskedinput.js" />
     <Content Include="Scripts\jquery.maskedinput.min.js" />
-    <Content Include="View\404-page.aspx" />
     <Content Include="View\500-page.aspx" />
     <Content Include="View\account-deleted.aspx" />
     <Content Include="View\ad-post-details.aspx" />
@@ -289,14 +289,14 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Model\Usuario.cs" />
-    <Compile Include="View\404-page.aspx.cs">
-      <DependentUpon>404-page.aspx</DependentUpon>
+    <Compile Include="erro\erro-page.aspx.cs">
+      <DependentUpon>erro-page.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="View\404-page.aspx.designer.cs">
-      <DependentUpon>404-page.aspx</DependentUpon>
+    <Compile Include="erro\erro-page.aspx.designer.cs">
+      <DependentUpon>erro-page.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Model\Usuario.cs" />
     <Compile Include="View\500-page.aspx.cs">
       <DependentUpon>500-page.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

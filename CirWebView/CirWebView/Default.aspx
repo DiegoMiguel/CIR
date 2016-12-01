@@ -13,12 +13,12 @@
    	<meta name="description" content=""/>
 
     <!-- CSS -->
+    <link rel="stylesheet" href="Content/css/main.css"/>
     <link rel="stylesheet" href="Content/css/bootstrap.min.css" />
     <link rel="stylesheet" href="Content/css/font-awesome.min.css"/>
 	<link rel="stylesheet" href="Content/css/icofont.css"/>
     <link rel="stylesheet" href="Content/css/owl.carousel.css"/>  
     <link rel="stylesheet" href="Content/css/slidr.css"/>     
-    <link rel="stylesheet" href="Content/css/main.css"/>  
 	<link id="preset" rel="stylesheet" href="Content/css/presets/preset1.css"/>	
     <link rel="stylesheet" href="Content/css/responsive.css"/>
 	
@@ -94,7 +94,7 @@
 				<h1 class="title sombra">CIR - Centro Integrado de Reciclagem</h1>
 				<!--<h3>Search from over 15,00,000 classifieds & Post unlimited classifieds free!</h3>-->
 				
-				<!-- banner-form -->
+								<!-- banner-form -->
 				<div class="banner-form">
 					<form action="#">
 						<!-- category-change -->
@@ -109,11 +109,11 @@
 							</ul>								
 						</div><!-- category-change -->
 					
-						<input type="text" class="form-control" placeholder="Digite sua Busca"/>
+						<input type="text" class="form-control" placeholder="Digite sua Busca">
 						<button type="submit" class="form-control" value="Search">Buscar</button>
 					</form>
 				</div><!-- banner-form -->
-				
+	
 				<!-- banner-socail -->
 				<ul class="banner-socail list-inline sombra">
 					<li><a href="#" title="Facebook"><i class="fa fa-facebook"></i></a></li>
