@@ -72,7 +72,7 @@
                             <div class="form-group-lg">
                                 <asp:DropDownList class="form-group" ID="ddlEstados" runat="server"  AutoPostBack="True" OnSelectedIndexChanged="ddlEstados_SelectedIndexChanged"></asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="rfvDdlEstados" runat="server" ControlToValidate="ddlEstados" InitialValue="----Selecione o Estado----" ErrorMessage="Selecione um Estado!" Display="Dynamic" class="or-separator-text" style="color:cadetblue"/>
-                                
+                                <br />
                                 <asp:DropDownList class="form-group" ID="ddlCidades" runat="server" Visible="False"></asp:DropDownList>
                                 <asp:RequiredFieldValidator ID="rdvDdlCidades" runat="server" ControlToValidate="ddlCidades" 
                                     InitialValue="----Selecione a Cidade ----" ErrorMessage="Selecione uma Cidade!" Display="Dynamic" 

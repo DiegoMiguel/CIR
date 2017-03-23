@@ -67,7 +67,10 @@ namespace CirWebView.Controllers
                 //get access token from response body
                 var responseJson = responseMessage.Content.ReadAsStringAsync(); // Serializa resposta em string
                 JObject json = JObject.Parse(responseJson.Result);  // Serializa string para objeto json
+
                 _sessaoCorrente.Session["token"] = json.GetValue("access_token").ToString();
+
+
                 return "ok";
         }
 
