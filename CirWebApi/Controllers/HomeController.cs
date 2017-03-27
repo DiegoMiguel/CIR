@@ -10,7 +10,7 @@ namespace CirWebApi.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Title = "Home Page";
+            ViewBag.Title = "CIR";
 
             return View();
         }

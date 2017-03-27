@@ -7,10 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CirWebView", "CirWebView\Ci
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CirWebApi", "CirWebApi\CirWebApi.csproj", "{FD909F4B-5237-4D2B-838C-5A28E4A7F582}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestAuthenticationWebApi", "TestAuthenticationWebApi\TestAuthenticationWebApi.csproj", "{ECA63AA1-32D9-46B6-BC1F-972A1B4C5262}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLoginBearer", "TestLoginBearer\TestLoginBearer.csproj", "{B57906B4-178D-41E9-B9AB-A6B4798127B4}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,14 +21,6 @@ Global
 		{FD909F4B-5237-4D2B-838C-5A28E4A7F582}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD909F4B-5237-4D2B-838C-5A28E4A7F582}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD909F4B-5237-4D2B-838C-5A28E4A7F582}.Release|Any CPU.Build.0 = Release|Any CPU
-		{ECA63AA1-32D9-46B6-BC1F-972A1B4C5262}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{ECA63AA1-32D9-46B6-BC1F-972A1B4C5262}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{ECA63AA1-32D9-46B6-BC1F-972A1B4C5262}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{ECA63AA1-32D9-46B6-BC1F-972A1B4C5262}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B57906B4-178D-41E9-B9AB-A6B4798127B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B57906B4-178D-41E9-B9AB-A6B4798127B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B57906B4-178D-41E9-B9AB-A6B4798127B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B57906B4-178D-41E9-B9AB-A6B4798127B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

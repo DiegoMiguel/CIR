@@ -40,8 +40,8 @@ namespace CirWebApi.Providers
             var identity = new ClaimsIdentity(context.Options.AuthenticationType);
             identity.AddClaim(new Claim("sub", context.UserName));  //(subject): Representa o nome de usuário para qual o Token foi expedido
             identity.AddClaim(new Claim("role", "usuario"));   //Representa em quais perfis o usuário se encontra
-
-            context.Validated(identity);
+            
+            context.Validated(identity); // Linha que valida e envia o token de acesso para a sessão em questão
         }
     }
 }

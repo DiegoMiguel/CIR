@@ -19,10 +19,6 @@ namespace CirWebApi
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
-
-            //forçar o envio da resposta no formato JSON.
-            var formatters = GlobalConfiguration.Configuration.Formatters;
-            formatters.Remove(formatters.XmlFormatter);
         }
     }
 }

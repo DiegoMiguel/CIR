@@ -7,7 +7,11 @@ using System.Web.Http;
 using Microsoft.Owin.Security.OAuth;
 using Microsoft.Owin.Cors;
 using CirWebApi.Providers;
+using Newtonsoft.Json.Serialization;
 
+/**
+ * Classe responsável por inicializar as configurações da API
+ */
 [assembly: OwinStartup(typeof(CirWebApi.Startup))]
 namespace CirWebApi
 {
@@ -17,10 +21,21 @@ namespace CirWebApi
         {
             HttpConfiguration config = new HttpConfiguration();
 
-            AtivarAcessToken(app);
+            //Formartando respostas para json
+            var formatters = config.Formatters;
+            formatters.Remove(formatters.XmlFormatter);
+            var jsonSettings = formatters.JsonFormatter.SerializerSettings;
+            jsonSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
+            jsonSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
 
+            formatters.JsonFormatter.SerializerSettings.PreserveReferencesHandling =
+                                                        Newtonsoft.Json.PreserveReferencesHandling.Objects;
+            // Fim da formatação
+       
             WebApiConfig.Register(config);
 
+            AtivarAcessToken(app);
+            
             // Ativa cors
             app.UseCors(CorsOptions.AllowAll);
 
@@ -36,7 +51,7 @@ namespace CirWebApi
                                             //Obviamente, num ambiente de produção, o valor deve ser false.
                 TokenEndpointPath = new PathString("/token"), // endereço do fornecimento do token de acesso
                 AccessTokenExpireTimeSpan = TimeSpan.FromHours(2),   //por quanto tempo um token de acesso já forncedido valerá (2hrs)
-                Provider = new ProviderDeTokensDeAcesso()
+                Provider = new ProviderDeTokensDeAcesso() // Responsável por verificar usuário e senha para fornecer tokens de acesso
             };
 
             // ativa o uso de tokens no projeto
