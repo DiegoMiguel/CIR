@@ -125,7 +125,7 @@ namespace CirWebView.View
             List<string> listaDeErros = new List<string>();
 
             string[] errosDoAtributo;
-            for (int i = 0; i < json.Count; i++)    // json.cout: número de pares {"atributo": erros[]}
+            for (int i = 0; i < json.Count; i++)    // json.count: número de pares {"atributo": erros[]}
             {
                 errosDoAtributo = json.Values().ElementAt(i).ToObject<string[]>();    // selecionando o array de erros de cada atributo
 
@@ -136,34 +136,5 @@ namespace CirWebView.View
             }
             _erros = listaDeErros;
         }
-
-
-
-
-
-        /*       protected void btnEntrar_Click(object sender, EventArgs e)
-               {
-                   bool sucess = new UsuarioController().Autenticar(txtEmail.Text, txtSenha.Text).Result;
-
-                   if (!sucess)
-                       lblMensagem.Text = "Email e/ou senha inválidos!";
-                   else
-                       Server.Transfer("ad-post.aspx");
-
-
-                   /* if (usuarioAutenticado != null)
-                    {
-
-                        Session["idUsuario"] = usuarioAutenticado.Id;
-                        Session["nomeUsuario"] = usuarioAutenticado.Nome;
-                        Session["senhaUsuario"] = usuarioAutenticado.Senha;
-
-                        Server.Transfer("Default.aspx");
-                    }
-                    else
-                    {
-
-                    }
-               }*/
     }
 }

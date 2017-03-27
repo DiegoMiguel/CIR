@@ -154,3 +154,8 @@ $RECYCLE.BIN/
 
 # Mac desktop service store files
 .DS_Store
+*.cs
+TestAuthenticationWebApi/ApplicationInsights.config
+*.config
+*.csproj
+*.suo

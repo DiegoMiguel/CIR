@@ -42,9 +42,18 @@ namespace CirWebApi.Controllers
             return db.usuarios ;
         }
 
+        public object GetUsuario(string email)
+        {
+            return db.usuarios.Where(usuario =>
+            usuario.Email.Equals(email, StringComparison.CurrentCultureIgnoreCase)).Select(usuario => new
+            {
+                usuario.Usuario_id, usuario.Nome, usuario.Cidade_id
+            }).FirstOrDefault();
+        }
+
         // GET: api/Usuarios/5
         [ResponseType(typeof(usuario))]
-        public async Task<IHttpActionResult> Getusuario(int id)
+        public async Task<IHttpActionResult> GetUsuario(int id)
         {
             usuario usuario = await db.usuarios.FindAsync(id);
             if (usuario == null)
