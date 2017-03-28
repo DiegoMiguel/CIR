@@ -29,7 +29,7 @@ namespace CirWebView.Controllers
             using (var client = new HttpClient())
             {
                 // Config client
-                client.BaseAddress = new Uri("http://localhost/cirwebapi");
+                client.BaseAddress = new Uri("http://cirapi.azurewebsites.net/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
@@ -81,7 +81,7 @@ namespace CirWebView.Controllers
             using (var client = new HttpClient())
             {
                 // Config client
-                client.BaseAddress = new Uri("http://localhost/cirwebapi/");
+                client.BaseAddress = new Uri("http://cirapi.azurewebsites.net/");
                 client.DefaultRequestHeaders.Accept.Clear();
                 client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
 
