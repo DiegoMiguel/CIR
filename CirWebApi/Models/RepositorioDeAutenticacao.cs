@@ -33,6 +33,7 @@ namespace CirWebApi.Models
 
             return await result;
         }
+
         public async Task<IdentityUser> FindUser(string email, string password)
         {
             IdentityUser user = await _gerenciaDeUser.FindAsync(email, password);
@@ -44,6 +45,7 @@ namespace CirWebApi.Models
 
             return null;
         }
+
         public void Dispose()
         {
             _contexto.Dispose();

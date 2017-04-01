@@ -12,6 +12,7 @@ using System.Web.Http.Description;
 using CirWebApi.Models;
 using System.Web.Http.Results;
 using System.Web.Http.Controllers;
+using Microsoft.Owin.Security.OAuth;
 
 namespace CirWebApi.Controllers
 {
@@ -19,7 +20,9 @@ namespace CirWebApi.Controllers
     {
         private CIREntities db = new CIREntities();
 
-        public async Task<IHttpActionResult> Autenticar(string email, string senha)
+        /*
+         * Método em desuso de autenticação, trocado pelo token
+         * public async Task<IHttpActionResult> Autenticar(string email, string senha)
         {
             UsuarioModel autenticado = db.usuarios
                 .Where(u => u.Email.Equals(email) && u.Senha.Equals(senha))
@@ -34,7 +37,7 @@ namespace CirWebApi.Controllers
                 }).FirstOrDefault();
 
             return Ok(autenticado);
-        }
+        }*/
 
         // GET: api/Usuarios
         public IQueryable<usuario> Getusuarios()
@@ -42,12 +45,14 @@ namespace CirWebApi.Controllers
             return db.usuarios ;
         }
 
-        public object GetUsuario(string email)
+        public UsuarioModel GetUsuario(string email)
         {
             return db.usuarios.Where(usuario =>
-            usuario.Email.Equals(email, StringComparison.CurrentCultureIgnoreCase)).Select(usuario => new
+            usuario.Email.Equals(email, StringComparison.CurrentCultureIgnoreCase)).Select(usuario => new UsuarioModel
             {
-                usuario.Usuario_id, usuario.Nome, usuario.Cidade_id
+                ID = usuario.Usuario_id,
+                NOME = usuario.Nome,
+                CIDADE_ID = usuario.Cidade_id
             }).FirstOrDefault();
         }
 
@@ -118,7 +123,9 @@ namespace CirWebApi.Controllers
 
             await db.SaveChangesAsync();
 
-            return Ok(db.usuarios.OrderByDescending(user => user.Usuario_id).AsEnumerable().First().Usuario_id);
+            //int idUsuario = db.usuarios.OrderByDescending(user => user.Usuario_id).AsEnumerable().First().Usuario_id;
+
+            return Ok();
         }
 
         // DELETE: api/Usuarios/5
