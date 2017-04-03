@@ -137,8 +137,6 @@
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Content\fonts\icofont4d84.svg" />
     <Content Include="Default.aspx" />
-    <None Include="Properties\PublishProfiles\cirweb - FTP.pubxml" />
-    <None Include="Properties\PublishProfiles\cirweb - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="erro\erro-page.aspx" />
     <Content Include="Scripts\jquery-3.1.1.js" />
