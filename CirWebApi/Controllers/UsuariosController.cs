@@ -16,6 +16,7 @@ using Microsoft.Owin.Security.OAuth;
 
 namespace CirWebApi.Controllers
 {
+    [RoutePrefix("api/Usuarios")]
     public class UsuariosController : ApiController
     {
         private CIREntities db = new CIREntities();
@@ -45,6 +46,7 @@ namespace CirWebApi.Controllers
             return db.usuarios ;
         }
 
+        [Route("{email}")]
         public UsuarioModel GetUsuario(string email)
         {
             return db.usuarios.Where(usuario =>

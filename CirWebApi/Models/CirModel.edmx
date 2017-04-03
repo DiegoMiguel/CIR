@@ -16,6 +16,7 @@
           <Property Name="Tipo_Categoria" Type="int" Nullable="false" />
           <Property Name="Imagem" Type="text" Nullable="false" />
           <Property Name="Categoria_Produto_id" Type="int" Nullable="false" />
+          <Property Name="titulo" Type="varchar" MaxLength="100" Nullable="false" />
         </EntityType>
         <EntityType Name="categoria">
           <Key>
@@ -58,7 +59,7 @@
           <Property Name="Nome" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="CPF_CNPJ" Type="varchar" MaxLength="15" Nullable="false" />
           <Property Name="Cidade_id" Type="int" Nullable="false" />
-          <Property Name="Data_Cadastro" Type="datetime" />
+          <Property Name="Data_Cadastro" Type="date" />
           <Property Name="Email" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="Senha" Type="varchar" MaxLength="16" />
         </EntityType>
@@ -200,6 +201,7 @@
           <NavigationProperty Name="denuncias" Relationship="Self.FK_anunciodenuncia" FromRole="anuncio" ToRole="denuncias" />
           <NavigationProperty Name="categoria" Relationship="Self.FK_catprod" FromRole="anuncio" ToRole="categoria" />
           <NavigationProperty Name="usuario" Relationship="Self.FK_usr_anuncio" FromRole="anuncio" ToRole="usuarios" />
+          <Property Name="titulo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="categoria">
           <Key>
@@ -249,7 +251,7 @@
           <Property Name="Nome" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="CPF_CNPJ" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Cidade_id" Type="Int32" Nullable="false" />
-          <Property Name="Data_Cadastro" Type="DateTime" Precision="3" />
+          <Property Name="Data_Cadastro" Type="DateTime" Precision="0" />
           <Property Name="Email" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Senha" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="anuncios" Relationship="Self.FK_usr_anuncio" FromRole="usuarios" ToRole="anuncio" />
@@ -386,6 +388,7 @@
           <EntitySetMapping Name="anuncios">
             <EntityTypeMapping TypeName="CIRModel.anuncio">
               <MappingFragment StoreEntitySet="anuncio">
+                <ScalarProperty Name="titulo" ColumnName="titulo" />
                 <ScalarProperty Name="Anuncio_id" ColumnName="Anuncio_id" />
                 <ScalarProperty Name="Usuario_id" ColumnName="Usuario_id" />
                 <ScalarProperty Name="Data" ColumnName="Data" />

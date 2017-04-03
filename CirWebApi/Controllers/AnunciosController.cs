@@ -13,14 +13,40 @@ using CirWebApi.Models;
 
 namespace CirWebApi.Controllers
 {
+    [RoutePrefix("api/Anuncios")]
     public class AnunciosController : ApiController
     {
         private CIREntities db = new CIREntities();
 
-        // GET: api/Anuncios
-        public IQueryable<anuncio> Getanuncios()
+        /// <summary>
+        /// Método que retorna a lista de anúncios ordenada pela cidade > data > estado de origem,
+        /// necessariamente nesse sentido.
+        /// </summary>
+        /// <param name="IDCidadeUsuario">
+        /// Id da cidade do usuário logado na requisição, responsável pela ordenação da lista
+        /// </param>
+        /// <returns>
+        /// Lista de Anúncios ordenados pela cidade, data e estado
+        /// </returns>
+        [Route("{IDCidadeUsuario}")]
+        public IQueryable<AnuncioModel> GetAnuncios(int IDCidadeUsuario)
         {
-            return db.anuncios;
+            string estadoUsuario = db.cidades.Where(cidade => cidade.Cidade_id == IDCidadeUsuario).Select(cidade => cidade.UF).First();
+
+            return db.anuncios.OrderByDescending(anuncio => anuncio.usuario.Cidade_id == IDCidadeUsuario)
+                              .ThenByDescending(anuncio => anuncio.usuario.cidade.UF.Equals(estadoUsuario))
+                              .ThenByDescending(anuncio => anuncio.Data)
+                              .Select(anuncio => new AnuncioModel
+                              {
+                                  ID = anuncio.Anuncio_id,
+                                  TITULO = anuncio.titulo,
+                                  DESCRICAO = anuncio.Descricao,
+                                  DATA = anuncio.Data,
+                                  IMAGEM = anuncio.Imagem,
+                                  CATEGORIA_ID = anuncio.Categoria_Produto_id,
+                                  USUARIO_ID = anuncio.Usuario_id,
+                                  CIDADE = anuncio.usuario.cidade.Cidade1
+                              });
         }
 
         // GET: api/Anuncios/5
