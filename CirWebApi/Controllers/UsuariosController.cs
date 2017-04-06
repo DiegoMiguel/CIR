@@ -46,16 +46,16 @@ namespace CirWebApi.Controllers
             return db.usuarios ;
         }
 
-        [Route("{email}")]
         public UsuarioModel GetUsuario(string email)
         {
-            return db.usuarios.Where(usuario =>
-            usuario.Email.Equals(email, StringComparison.CurrentCultureIgnoreCase)).Select(usuario => new UsuarioModel
-            {
-                ID = usuario.Usuario_id,
-                NOME = usuario.Nome,
-                CIDADE_ID = usuario.Cidade_id
-            }).FirstOrDefault();
+            return db.usuarios
+                    .Where(usuario => usuario.Email.Equals(email, StringComparison.CurrentCultureIgnoreCase))
+                    .Select(usuario => new UsuarioModel
+                    {
+                        ID = usuario.Usuario_id,
+                        NOME = usuario.Nome,
+                        CIDADE_ID = usuario.Cidade_id
+                    }).FirstOrDefault();
         }
 
         // GET: api/Usuarios/5
@@ -125,9 +125,7 @@ namespace CirWebApi.Controllers
 
             await db.SaveChangesAsync();
 
-            //int idUsuario = db.usuarios.OrderByDescending(user => user.Usuario_id).AsEnumerable().First().Usuario_id;
-
-            return Ok();
+            return Ok(db.usuarios.OrderByDescending(user => user.Usuario_id).First().Usuario_id);
         }
 
         // DELETE: api/Usuarios/5
