@@ -13,7 +13,6 @@
           <Property Name="Usuario_id" Type="int" Nullable="false" />
           <Property Name="Data" Type="date" Nullable="false" />
           <Property Name="Descricao" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="Tipo_Categoria" Type="int" Nullable="false" />
           <Property Name="Imagem" Type="text" Nullable="false" />
           <Property Name="Categoria_Produto_id" Type="int" Nullable="false" />
           <Property Name="titulo" Type="varchar" MaxLength="100" Nullable="false" />
@@ -195,7 +194,6 @@
           <Property Name="Usuario_id" Type="Int32" Nullable="false" />
           <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
           <Property Name="Descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Tipo_Categoria" Type="Int32" Nullable="false" />
           <Property Name="Imagem" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Categoria_Produto_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="denuncias" Relationship="Self.FK_anunciodenuncia" FromRole="anuncio" ToRole="denuncias" />
@@ -393,7 +391,6 @@
                 <ScalarProperty Name="Usuario_id" ColumnName="Usuario_id" />
                 <ScalarProperty Name="Data" ColumnName="Data" />
                 <ScalarProperty Name="Descricao" ColumnName="Descricao" />
-                <ScalarProperty Name="Tipo_Categoria" ColumnName="Tipo_Categoria" />
                 <ScalarProperty Name="Imagem" ColumnName="Imagem" />
                 <ScalarProperty Name="Categoria_Produto_id" ColumnName="Categoria_Produto_id" />
               </MappingFragment>

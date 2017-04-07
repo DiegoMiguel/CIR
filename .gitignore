@@ -159,3 +159,8 @@ TestAuthenticationWebApi/ApplicationInsights.config
 *.config
 *.csproj
 *.suo
+*.pubxml
+CirWebView/CirWebView/CirWebView.csproj
+*.csproj
+CirWebView/CirWebView/CirWebView.csproj
+*.csproj

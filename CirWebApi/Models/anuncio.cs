@@ -24,7 +24,6 @@ namespace CirWebApi.Models
         public int Usuario_id { get; set; }
         public System.DateTime Data { get; set; }
         public string Descricao { get; set; }
-        public int Tipo_Categoria { get; set; }
         public string Imagem { get; set; }
         public int Categoria_Produto_id { get; set; }
         public string titulo { get; set; }

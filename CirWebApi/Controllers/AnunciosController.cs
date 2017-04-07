@@ -98,18 +98,38 @@ namespace CirWebApi.Controllers
         }
 
         // POST: api/Anuncios
-        [ResponseType(typeof(anuncio))]
-        public async Task<IHttpActionResult> Postanuncio(anuncio anuncio)
+        /// <summary>
+        /// Método que adiciona anúncios
+        /// </summary>
+        /// <param name="novoAnuncio">
+        /// Devem ser enviados os atributos:
+        /// Titulo, Descricao, Usuario_id, Imagem e categoria_produto_id 
+        /// </param>
+        /// <returns>
+        /// Confirmação da criação com o idGerado
+        /// </returns>
+        [ResponseType(typeof(int))]
+        public async Task<IHttpActionResult> PostAnuncio(AnuncioModel novoAnuncio)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.anuncios.Add(anuncio);
+            db.anuncios.Add(new anuncio
+            {
+                titulo = novoAnuncio.TITULO,
+                Descricao = novoAnuncio.DESCRICAO,
+                Usuario_id = novoAnuncio.USUARIO_ID,
+                Imagem = novoAnuncio.IMAGEM,
+                Categoria_Produto_id = novoAnuncio.CATEGORIA_ID,
+            });
+
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = anuncio.Anuncio_id }, anuncio);
+            int idGerado = db.anuncios.OrderByDescending(anuncio => anuncio.Anuncio_id).First().Anuncio_id;
+
+            return Created("DefaultApi", new { idGerado });
         }
 
         // DELETE: api/Anuncios/5
