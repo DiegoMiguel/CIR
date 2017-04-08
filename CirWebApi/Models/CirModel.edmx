@@ -12,10 +12,10 @@
           <Property Name="Anuncio_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Usuario_id" Type="int" Nullable="false" />
           <Property Name="Data" Type="date" Nullable="false" />
-          <Property Name="Descricao" Type="varchar" MaxLength="255" Nullable="false" />
-          <Property Name="Imagem" Type="text" Nullable="false" />
+          <Property Name="Descricao" Type="varchar" MaxLength="255" />
+          <Property Name="Imagem" Type="text" />
           <Property Name="Categoria_Produto_id" Type="int" Nullable="false" />
-          <Property Name="titulo" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="titulo" Type="varchar" MaxLength="50" Nullable="false" />
         </EntityType>
         <EntityType Name="categoria">
           <Key>
@@ -193,13 +193,13 @@
           <Property Name="Anuncio_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Usuario_id" Type="Int32" Nullable="false" />
           <Property Name="Data" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="Descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Imagem" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descricao" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Imagem" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Categoria_Produto_id" Type="Int32" Nullable="false" />
           <NavigationProperty Name="denuncias" Relationship="Self.FK_anunciodenuncia" FromRole="anuncio" ToRole="denuncias" />
           <NavigationProperty Name="categoria" Relationship="Self.FK_catprod" FromRole="anuncio" ToRole="categoria" />
           <NavigationProperty Name="usuario" Relationship="Self.FK_usr_anuncio" FromRole="anuncio" ToRole="usuarios" />
-          <Property Name="titulo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="titulo" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="categoria">
           <Key>

@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
 using CirWebApi.Models;
+using System.Data.Entity.Validation;
 
 namespace CirWebApi.Controllers
 {
@@ -104,6 +105,7 @@ namespace CirWebApi.Controllers
         /// <param name="novoAnuncio">
         /// Devem ser enviados os atributos:
         /// Titulo, Descricao, Usuario_id, Imagem e categoria_produto_id 
+        /// OBS: Descicao e Imagem podem ser nulos (não serem descritos na requisição)
         /// </param>
         /// <returns>
         /// Confirmação da criação com o idGerado
@@ -123,10 +125,9 @@ namespace CirWebApi.Controllers
                 Usuario_id = novoAnuncio.USUARIO_ID,
                 Imagem = novoAnuncio.IMAGEM,
                 Categoria_Produto_id = novoAnuncio.CATEGORIA_ID,
+                Data = DateTime.Now
             });
-
-            await db.SaveChangesAsync();
-
+            
             int idGerado = db.anuncios.OrderByDescending(anuncio => anuncio.Anuncio_id).First().Anuncio_id;
 
             return Created("DefaultApi", new { idGerado });
