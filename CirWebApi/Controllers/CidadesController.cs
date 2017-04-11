@@ -19,12 +19,20 @@ namespace CirWebApi.Controllers
         private CIREntities db = new CIREntities();
 
         // GET: api/Cidades
+        /// <summary>
+        /// Não implementado!
+        /// </summary>
+        /// <returns></returns>
         public IQueryable<cidade> Getcidades()
         {
             return db.cidades;
         }
 
         // GET: api/Cidades/Estados
+        /// <summary>
+        /// Obter lista ordenada dos estados brasileiros
+        /// </summary>
+        /// <returns>Lista de Strings com todos os estados</returns>
         [Route("Estados")]
         public List<string> GetEstados()
         {
@@ -35,6 +43,11 @@ namespace CirWebApi.Controllers
         }
 
         // GET: api/cidades/CidadesPorEstado/{UF}
+        /// <summary>
+        /// Obter lista das cidades de um determinado estado
+        /// </summary>
+        /// <param name="UF">Sigla do estado de interesse</param>
+        /// <returns>Lista contendo objetos com os atributos: Cidade_id, Nome_cidade</returns>
         [HttpGet, Route("CidadesPorEstado/{uf}")]
         public object CidadesPorEstado(string UF)
         {
@@ -45,6 +58,10 @@ namespace CirWebApi.Controllers
         }
 
         // GET: api/Cidades/5
+        /// <summary>
+        /// Não implementado!
+        /// </summary>
+        /// <returns></returns>
         [ResponseType(typeof(cidade))]
         public async Task<IHttpActionResult> Getcidade(int id)
         {

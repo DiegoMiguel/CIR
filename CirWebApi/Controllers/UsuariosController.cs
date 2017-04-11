@@ -21,31 +21,22 @@ namespace CirWebApi.Controllers
     {
         private CIREntities db = new CIREntities();
 
-        /*
-         * Método em desuso de autenticação, trocado pelo token
-         * public async Task<IHttpActionResult> Autenticar(string email, string senha)
-        {
-            UsuarioModel autenticado = db.usuarios
-                .Where(u => u.Email.Equals(email) && u.Senha.Equals(senha))
-                .Select(u => new UsuarioModel
-                {
-                    ID = u.Usuario_id,
-                    NOME = u.Nome,
-                    CPF_CNPJ = u.CPF_CNPJ,
-                    CIDADE_ID = u.Cidade_id,
-                    EMAIL = u.Email,
-                    SENHA = u.Senha
-                }).FirstOrDefault();
-
-            return Ok(autenticado);
-        }*/
-
+        /// <summary>
+        /// Não Implementado!
+        /// </summary>
+        /// <returns></returns>
         // GET: api/Usuarios
         public IQueryable<usuario> Getusuarios()
         {
             return db.usuarios ;
         }
 
+        /// <summary>
+        /// Obter usuário atrelado à conta de email fornecida
+        /// </summary>
+        /// <param name="email"></param>
+        /// <returns>Os dados reais retornados aqui são:
+        /// ID, NOME, CIDADE_ID</returns>
         public UsuarioModel GetUsuario(string email)
         {
             return db.usuarios
@@ -56,9 +47,13 @@ namespace CirWebApi.Controllers
                         NOME = usuario.Nome,
                         CIDADE_ID = usuario.Cidade_id
                     }).FirstOrDefault();
-        }
+        }   
 
         // GET: api/Usuarios/5
+        /// <summary>
+        /// Não Implementado!
+        /// </summary>
+        /// <returns></returns>
         [ResponseType(typeof(usuario))]
         public async Task<IHttpActionResult> GetUsuario(int id)
         {
@@ -72,6 +67,10 @@ namespace CirWebApi.Controllers
         }
 
         // PUT: api/Usuarios/5
+        /// <summary>
+        /// Não Implementado!
+        /// </summary>
+        /// <returns></returns>
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> Putusuario(int id, usuario usuario)
         {
@@ -106,8 +105,13 @@ namespace CirWebApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // POST: api/Usuarios
-        [AllowAnonymous]
+        /// <summary>
+        /// Adiciona os dados do usuário adicionado e com credenciais já geradas
+        /// </summary>
+        /// <param name="usuario"></param>
+        /// <param name="contextoDaRequisicao"></param>
+        /// <returns>Status da transação e id do usuário gerado</returns>
+        [ApiExplorerSettings(IgnoreApi = true)] // Ignora este método ao realizar a documentação
         [ResponseType(typeof(int))]
         public async Task<IHttpActionResult> PostUsuario(UsuarioModel usuario, HttpControllerContext contextoDaRequisicao)
         {
@@ -128,6 +132,10 @@ namespace CirWebApi.Controllers
             return Ok(db.usuarios.OrderByDescending(user => user.Usuario_id).First().Usuario_id);
         }
 
+        /// <summary>
+        /// Não Implementado!
+        /// </summary>
+        /// <returns></returns>
         // DELETE: api/Usuarios/5
         [ResponseType(typeof(usuario))]
         public async Task<IHttpActionResult> Deleteusuario(int id)

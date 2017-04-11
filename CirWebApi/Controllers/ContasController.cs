@@ -20,6 +20,17 @@ namespace CirWebApi.Controllers
         }
 
         // POST api/Contas/Registrar
+        /// <summary>
+        /// Registra usuário
+        /// </summary>
+        /// <param name="novoUsuario">Dados a serem enviados:
+        /// NOME, CPF_CNPJ, CIDADE_ID, EMAIL (usado como login), SENHA</param>
+        /// <returns>Int representando o id gerado</returns>
+        /**
+         * A conta do usuário é dividida em duas áreas: a de autenticação e outra para os dados.
+         * Esse método é responsável por criar e salvar a autenticação do usuário. Se tudo ocorrer bem,
+         * Ele repassa a chamada ao método que persiste seus dados.
+         * */
         [AllowAnonymous]
         [Route("Registrar")]
         [ResponseType(typeof(int))]

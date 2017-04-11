@@ -20,8 +20,7 @@ namespace CirWebApi.Controllers
         private CIREntities db = new CIREntities();
 
         /// <summary>
-        /// Método que retorna a lista de anúncios ordenada pela cidade > data > estado de origem,
-        /// necessariamente nesse sentido.
+        /// Retorna a lista de anúncios ordenada pela cidade > data > estado de origem
         /// </summary>
         /// <param name="IDCidadeUsuario">
         /// Id da cidade do usuário logado na requisição, responsável pela ordenação da lista
@@ -50,6 +49,10 @@ namespace CirWebApi.Controllers
                               });
         }
 
+        /// <summary>
+        /// Não Implementado!
+        /// </summary>
+        /// <returns></returns>
         // GET: api/Anuncios/5
         [ResponseType(typeof(anuncio))]
         public async Task<IHttpActionResult> Getanuncio(int id)
@@ -63,6 +66,10 @@ namespace CirWebApi.Controllers
             return Ok(anuncio);
         }
 
+        /// <summary>
+        /// Não Implementado!
+        /// </summary>
+        /// <returns></returns>
         // PUT: api/Anuncios/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> Putanuncio(int id, anuncio anuncio)
@@ -100,11 +107,11 @@ namespace CirWebApi.Controllers
 
         // POST: api/Anuncios
         /// <summary>
-        /// Método que adiciona anúncios
+        /// Adiciona anúncio
         /// </summary>
         /// <param name="novoAnuncio">
         /// Devem ser enviados os atributos:
-        /// Titulo, Descricao, Usuario_id, Imagem e categoria_produto_id 
+        /// TITULO, DESCRICAO, USUARIO_ID, IMAGEM e CATEGORIA_ID 
         /// OBS: Descicao e Imagem podem ser nulos (não serem descritos na requisição)
         /// </param>
         /// <returns>
@@ -127,12 +134,18 @@ namespace CirWebApi.Controllers
                 Categoria_Produto_id = novoAnuncio.CATEGORIA_ID,
                 Data = DateTime.Now
             });
+
+            await db.SaveChangesAsync();
             
             int idGerado = db.anuncios.OrderByDescending(anuncio => anuncio.Anuncio_id).First().Anuncio_id;
 
             return Created("DefaultApi", new { idGerado });
         }
 
+        /// <summary>
+        /// Não Implementado!
+        /// </summary>
+        /// <returns></returns>
         // DELETE: api/Anuncios/5
         [ResponseType(typeof(anuncio))]
         public async Task<IHttpActionResult> Deleteanuncio(int id)
