@@ -50,11 +50,15 @@ namespace CirWebApi.Controllers
         }
 
         /// <summary>
-        /// Não Implementado!
+        /// Recupera anúncio salvo com um Id específico
         /// </summary>
-        /// <returns></returns>
-        // GET: api/Anuncios/5
-        [ResponseType(typeof(anuncio))]
+        /// <returns>
+        /// Objeto representando o anúncio cadastrado
+        /// </returns>
+        /// <remarks>OBS:: Verificar a rota! (/api/anuncios/anuncio/id)</remarks>
+        // GET: api/Anuncios/Anuncio/5
+        [Route("anuncio/{id}")]
+        [ResponseType(typeof(AnuncioModel))]
         public async Task<IHttpActionResult> Getanuncio(int id)
         {
             anuncio anuncio = await db.anuncios.FindAsync(id);
@@ -63,7 +67,19 @@ namespace CirWebApi.Controllers
                 return NotFound();
             }
 
-            return Ok(anuncio);
+            AnuncioModel anuncioEncontrado = new AnuncioModel
+            {
+                ID = id,
+                TITULO = anuncio.titulo,
+                DESCRICAO = anuncio.Descricao,
+                DATA = anuncio.Data,
+                IMAGEM = anuncio.Imagem,
+                CATEGORIA_ID = anuncio.Categoria_Produto_id,
+                USUARIO_ID = anuncio.Usuario_id,
+                CIDADE = anuncio.usuario.cidade.Cidade1
+            };
+
+            return Ok(anuncioEncontrado);
         }
 
         /// <summary>
@@ -136,10 +152,8 @@ namespace CirWebApi.Controllers
             });
 
             await db.SaveChangesAsync();
-            
-            int idGerado = db.anuncios.OrderByDescending(anuncio => anuncio.Anuncio_id).First().Anuncio_id;
 
-            return Created("DefaultApi", new { idGerado });
+            return Ok(db.anuncios.OrderByDescending(anuncio => anuncio.Anuncio_id).First().Anuncio_id);
         }
 
         /// <summary>
