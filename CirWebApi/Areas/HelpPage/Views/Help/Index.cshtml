@@ -6,7 +6,7 @@
 @model Collection<ApiDescription>
 
 @{
-    ViewBag.Title = "ASP.NET Web API Help Page";
+    ViewBag.Title = "CIR WEB API Help Page";
 
     // Group APIs by controller
     ILookup<HttpControllerDescriptor, ApiDescription> apiGroups = Model.ToLookup(api => api.ActionDescriptor.ControllerDescriptor);
@@ -23,9 +23,10 @@
 <div id="body" class="help-page">
     <section class="featured">
         <div class="content-wrapper">
-            <h2>Introduction</h2>
+            <h2>Apresentação</h2>
             <p>
-                Provide a general description of your APIs here.
+                A seguir estão as definições das funcionalidades e métodos de usabilidade<br />
+                Alguns exemplos não são fiéis ao uso, se atenha à descrição
             </p>
         </div>
     </section>

@@ -21,6 +21,9 @@ namespace CirWebApi
         {
             HttpConfiguration config = new HttpConfiguration();
 
+            // Add this line to enable detail mode in release
+            //config.IncludeErrorDetailPolicy = IncludeErrorDetailPolicy.Always;
+            
             //Formartando respostas para json
             var formatters = config.Formatters;
             formatters.Remove(formatters.XmlFormatter);

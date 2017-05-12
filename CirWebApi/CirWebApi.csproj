@@ -25,6 +25,8 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <ApplicationInsightsResourceId>/subscriptions/a0ef0a20-26f1-4e80-aef1-6cf5c0cd20bf/resourcegroups/cir/providers/microsoft.insights/components/cirapi</ApplicationInsightsResourceId>
+    <ApplicationInsightsAnnotationResourceId>/subscriptions/a0ef0a20-26f1-4e80-aef1-6cf5c0cd20bf/resourcegroups/cir/providers/microsoft.insights/components/cirapi</ApplicationInsightsAnnotationResourceId>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -240,7 +242,9 @@
     <Compile Include="Controllers\ContasController.cs" />
     <Compile Include="Controllers\DenunciasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImageHelper.cs" />
     <Compile Include="Controllers\UsuariosController.cs" />
+    <Compile Include="ErrorHandler\AiHandleErrorAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -344,6 +348,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Connected Services\Application Insights\ConnectedService.json" />
     <None Include="Properties\PublishProfiles\CIR.pubxml" />
     <None Include="Properties\PublishProfiles\cirapi - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\cirapi - Web Deploy.pubxml" />
@@ -386,6 +391,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Galeria\Anuncios\" />
+    <Folder Include="Galeria\Thumbnails\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config">
@@ -395,6 +402,9 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

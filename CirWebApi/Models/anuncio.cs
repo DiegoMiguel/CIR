@@ -27,6 +27,7 @@ namespace CirWebApi.Models
         public string Imagem { get; set; }
         public int Categoria_Produto_id { get; set; }
         public string titulo { get; set; }
+        public string Thumbnail { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<denuncia> denuncias { get; set; }

@@ -16,6 +16,7 @@
           <Property Name="Categoria_Produto_id" Type="int" Nullable="false" />
           <Property Name="titulo" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Data" Type="datetime" Nullable="false" />
+          <Property Name="Thumbnail" Type="text" />
         </EntityType>
         <EntityType Name="categoria">
           <Key>
@@ -200,6 +201,7 @@
           <NavigationProperty Name="categoria" Relationship="Self.FK_catprod" FromRole="anuncio" ToRole="categoria" />
           <NavigationProperty Name="usuario" Relationship="Self.FK_usr_anuncio" FromRole="anuncio" ToRole="usuarios" />
           <Property Name="titulo" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Thumbnail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="categoria">
           <Key>
@@ -386,6 +388,7 @@
           <EntitySetMapping Name="anuncios">
             <EntityTypeMapping TypeName="CIRModel.anuncio">
               <MappingFragment StoreEntitySet="anuncio">
+                <ScalarProperty Name="Thumbnail" ColumnName="Thumbnail" />
                 <ScalarProperty Name="titulo" ColumnName="titulo" />
                 <ScalarProperty Name="Anuncio_id" ColumnName="Anuncio_id" />
                 <ScalarProperty Name="Usuario_id" ColumnName="Usuario_id" />

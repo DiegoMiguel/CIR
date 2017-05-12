@@ -13,3 +13,8 @@ GO
 ALTER TABLE [dbo].[anuncio]
     ADD [Data] DATETIME DEFAULT getDate() NOT NULL;
 GO
+
+/* Adicionando tabela Thumbnail em anuncio */
+ALTER TABLE [dbo].[anuncio]
+    ADD [Thumbnail] TEXT NULL;
+GO

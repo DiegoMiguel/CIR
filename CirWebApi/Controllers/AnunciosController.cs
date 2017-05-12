@@ -11,6 +11,10 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using CirWebApi.Models;
 using System.Data.Entity.Validation;
+using System.Drawing;
+using System.IO;
+using System.Web;
+using System.Drawing.Imaging;
 
 namespace CirWebApi.Controllers
 {
@@ -18,6 +22,7 @@ namespace CirWebApi.Controllers
     public class AnunciosController : ApiController
     {
         private CIREntities db = new CIREntities();
+        private HttpContext _currentContext = HttpContext.Current;
 
         /// <summary>
         /// Retorna a lista de anúncios ordenada pela cidade > data > estado de origem
@@ -27,26 +32,40 @@ namespace CirWebApi.Controllers
         /// </param>
         /// <returns>
         /// Lista de Anúncios ordenados pela cidade, data e estado
+        /// No campo "IMAGEM", será enviado o Thumbnail, caso exista, em StringBase64.
         /// </returns>
-        [Route("{IDCidadeUsuario}")]
-        public IQueryable<AnuncioModel> GetAnuncios(int IDCidadeUsuario)
+        [Route("{IDCidadeUsuario:int}")]
+        public IEnumerable<AnuncioModel> GetAnuncios(int IDCidadeUsuario)
         {
             string estadoUsuario = db.cidades.Where(cidade => cidade.Cidade_id == IDCidadeUsuario).Select(cidade => cidade.UF).First();
 
-            return db.anuncios.OrderByDescending(anuncio => anuncio.usuario.Cidade_id == IDCidadeUsuario)
-                              .ThenByDescending(anuncio => anuncio.usuario.cidade.UF.Equals(estadoUsuario))
-                              .ThenByDescending(anuncio => anuncio.Data)
-                              .Select(anuncio => new AnuncioModel
-                              {
-                                  ID = anuncio.Anuncio_id,
-                                  TITULO = anuncio.titulo,
-                                  DESCRICAO = anuncio.Descricao,
-                                  DATA = anuncio.Data,
-                                  IMAGEM = anuncio.Imagem,
-                                  CATEGORIA_ID = anuncio.Categoria_Produto_id,
-                                  USUARIO_ID = anuncio.Usuario_id,
-                                  CIDADE = anuncio.usuario.cidade.Cidade1
-                              });
+            var anunciosList = db.anuncios.OrderByDescending(anuncio => anuncio.usuario.Cidade_id == IDCidadeUsuario)
+                            .ThenByDescending(anuncio => anuncio.usuario.cidade.UF.Equals(estadoUsuario))
+                            .ThenByDescending(anuncio => anuncio.Data)
+                            //.AsEnumerable()  //Necessário para poder chamar o método dentro do LINQ
+                            .Select(anuncio => new AnuncioModel
+                            {
+                                ID = anuncio.Anuncio_id,
+                                TITULO = anuncio.titulo,
+                                DESCRICAO = anuncio.Descricao,
+                                DATA = anuncio.Data,
+                                IMAGEM = anuncio.Thumbnail,
+                                //IMAGEM = setImagem(ImageHelper.Tipo.Thumbnail, anuncio.Thumbnail),
+                                CATEGORIA_ID = anuncio.Categoria_Produto_id,
+                                USUARIO_ID = anuncio.Usuario_id,
+                                CIDADE = anuncio.usuario.cidade.Cidade1
+                            });
+
+            return anunciosList;
+        }
+
+        private string setImagem(ImageHelper.Tipo tipo, string imageFile)
+        {
+            if (!string.IsNullOrWhiteSpace(imageFile))
+            {
+                return new ImageHelper(_currentContext).Load(tipo, imageFile);
+            }
+            return null;
         }
 
         /// <summary>
@@ -54,6 +73,7 @@ namespace CirWebApi.Controllers
         /// </summary>
         /// <returns>
         /// Objeto representando o anúncio cadastrado
+        /// No campo "IMAGEM", será enviada a Imagem no tamanho real, caso exista, em StringBase64.
         /// </returns>
         /// <remarks>OBS:: Verificar a rota! (/api/anuncios/anuncio/id)</remarks>
         // GET: api/Anuncios/Anuncio/5
@@ -73,7 +93,7 @@ namespace CirWebApi.Controllers
                 TITULO = anuncio.titulo,
                 DESCRICAO = anuncio.Descricao,
                 DATA = anuncio.Data,
-                IMAGEM = anuncio.Imagem,
+                IMAGEM = setImagem(ImageHelper.Tipo.Real, anuncio.Imagem),
                 CATEGORIA_ID = anuncio.Categoria_Produto_id,
                 USUARIO_ID = anuncio.Usuario_id,
                 CIDADE = anuncio.usuario.cidade.Cidade1
@@ -126,9 +146,10 @@ namespace CirWebApi.Controllers
         /// Adiciona anúncio
         /// </summary>
         /// <param name="novoAnuncio">
-        /// Devem ser enviados os atributos:
-        /// TITULO, DESCRICAO, USUARIO_ID, IMAGEM e CATEGORIA_ID 
-        /// OBS: Descicao e Imagem podem ser nulos (não serem descritos na requisição)
+        /// Devem ser enviados os atributos: 
+        /// TITULO, DESCRICAO, USUARIO_ID, IMAGEM e CATEGORIA_ID
+        /// OBS: ¹ Descicao e Imagem podem ser nulos (não serem descritos na requisição)
+        ///      ² A imagem deve ser String Base64.
         /// </param>
         /// <returns>
         /// Confirmação da criação com o idGerado
@@ -141,18 +162,36 @@ namespace CirWebApi.Controllers
                 return BadRequest(ModelState);
             }
 
+            // Assume que id's inválidos podem ser obtidos para a nomeação das imagens:
+            // se ocorre algum erro no salvamento de informações no banco de dados,
+            // o id do dado com erro é pulado e no proximo processamento, o incremento
+            // seleciona o próximo
+            int novoId = db.anuncios.Max(anuncio => anuncio.Anuncio_id) + 1;
+
+            string imageFile;
+            try
+            {
+                imageFile = new ImageHelper(_currentContext).Salvar(novoAnuncio.IMAGEM, novoId);
+            }
+            catch 
+            {
+                return BadRequest("Imagem Inválida!");
+            }
+            
             db.anuncios.Add(new anuncio
             {
                 titulo = novoAnuncio.TITULO,
                 Descricao = novoAnuncio.DESCRICAO,
                 Usuario_id = novoAnuncio.USUARIO_ID,
-                Imagem = novoAnuncio.IMAGEM,
+                Imagem = imageFile,
                 Categoria_Produto_id = novoAnuncio.CATEGORIA_ID,
-                Data = DateTime.Now
+                Data = DateTime.Now,
+                Thumbnail = ImageHelper.ThumbIdentifier + imageFile
             });
 
             await db.SaveChangesAsync();
 
+            // Garante o número correto do novoId gerado
             return Ok(db.anuncios.OrderByDescending(anuncio => anuncio.Anuncio_id).First().Anuncio_id);
         }
 
