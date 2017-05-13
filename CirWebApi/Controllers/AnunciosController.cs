@@ -39,24 +39,26 @@ namespace CirWebApi.Controllers
         {
             string estadoUsuario = db.cidades.Where(cidade => cidade.Cidade_id == IDCidadeUsuario).Select(cidade => cidade.UF).First();
 
-            var anunciosList = db.anuncios.OrderByDescending(anuncio => anuncio.usuario.Cidade_id == IDCidadeUsuario)
+            // Para poder chamar a função setImagem dentro da query LINQ,
+            //  transformo a lista de acesso ao banco de DbSet para IEnumerable.
+            // "AsEnumerable" nessa posição evita o erro de DataReader, em outras posições
+            // a query poderia ser repartida em outras threads ocorrendo erro por elas se dependerem
+            // e serem finalizadas em momentos distintos.
+            return db.anuncios.AsEnumerable().OrderByDescending(anuncio => anuncio.usuario.Cidade_id == IDCidadeUsuario)
                             .ThenByDescending(anuncio => anuncio.usuario.cidade.UF.Equals(estadoUsuario))
-                            .ThenByDescending(anuncio => anuncio.Data)
-                            //.AsEnumerable()  //Necessário para poder chamar o método dentro do LINQ
+                            .ThenByDescending(anuncio => anuncio.Data)        
                             .Select(anuncio => new AnuncioModel
                             {
                                 ID = anuncio.Anuncio_id,
                                 TITULO = anuncio.titulo,
                                 DESCRICAO = anuncio.Descricao,
                                 DATA = anuncio.Data,
-                                IMAGEM = anuncio.Thumbnail,
-                                //IMAGEM = setImagem(ImageHelper.Tipo.Thumbnail, anuncio.Thumbnail),
+                                IMAGEM = setImagem(ImageHelper.Tipo.Thumbnail, anuncio.Thumbnail),
                                 CATEGORIA_ID = anuncio.Categoria_Produto_id,
                                 USUARIO_ID = anuncio.Usuario_id,
                                 CIDADE = anuncio.usuario.cidade.Cidade1
-                            });
-
-            return anunciosList;
+                            }); 
+            
         }
 
         private string setImagem(ImageHelper.Tipo tipo, string imageFile)
