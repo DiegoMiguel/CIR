@@ -179,7 +179,9 @@ namespace CirWebApi.Controllers
             {
                 return BadRequest("Imagem Inválida!");
             }
-            
+
+            string thumbnail = (imageFile == null) ? null : ImageHelper.ThumbIdentifier + imageFile;
+
             db.anuncios.Add(new anuncio
             {
                 titulo = novoAnuncio.TITULO,
@@ -188,7 +190,7 @@ namespace CirWebApi.Controllers
                 Imagem = imageFile,
                 Categoria_Produto_id = novoAnuncio.CATEGORIA_ID,
                 Data = DateTime.Now,
-                Thumbnail = ImageHelper.ThumbIdentifier + imageFile
+                Thumbnail = thumbnail
             });
 
             await db.SaveChangesAsync();
