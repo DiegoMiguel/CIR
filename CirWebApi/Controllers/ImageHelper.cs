@@ -102,8 +102,16 @@ namespace CirWebApi.Controllers
 
         internal void DeleteAnuncioImages(string imagem, string thumbnail)
         {
-            File.Delete(Path.Combine(_anuncioPath, imagem));
-            File.Delete(Path.Combine(_thumbnailPath, thumbnail));
+            try
+            {
+                File.Delete(Path.Combine(_anuncioPath, imagem));
+                File.Delete(Path.Combine(_thumbnailPath, thumbnail));
+            }
+            catch
+            {
+                throw new Exception("Erro ao deletar imagens do anúncio");
+            }
+            
         }
     }
 }

@@ -133,11 +133,11 @@ namespace CirWebApi.Controllers
         }
 
         /// <summary>
-        /// Não Implementado!
+        /// Apaga dos registros o usuario identificado no id
         /// </summary>
-        /// <returns></returns>
+        /// <remarks>OBS: Todos os dados movidos pelo usuário também são excluídos!</remarks>
+        /// <returns>NotFound result or Success Result</returns>
         // DELETE: api/Usuarios/5
-        [ResponseType(typeof(usuario))]
         public async Task<IHttpActionResult> DeleteUsuario(int id)
         {
             usuario usuario = await db.usuarios.FindAsync(id);
@@ -155,7 +155,7 @@ namespace CirWebApi.Controllers
                                          // todas as referências do usuário também são excluídas
             await db.SaveChangesAsync();
 
-            return Ok(usuario);
+            return Ok();
         }
 
         protected override void Dispose(bool disposing)

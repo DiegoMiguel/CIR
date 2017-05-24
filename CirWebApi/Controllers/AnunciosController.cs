@@ -205,12 +205,14 @@ namespace CirWebApi.Controllers
         }
 
         /// <summary>
-        /// Não Implementado!
+        /// Exclui os dados de um anúncio
         /// </summary>
-        /// <returns></returns>
+        /// <remarks>Apaga também todos os dados ligados ao Anúncio</remarks>
+        /// <returns>NotFound or Success Result</returns>
         // DELETE: api/Anuncios/5
-        [ResponseType(typeof(anuncio))]
-        public async Task<IHttpActionResult> Deleteanuncio(int id)
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task<IHttpActionResult> DeleteAnuncio(int id)
         {
             anuncio anuncio = await db.anuncios.FindAsync(id);
             if (anuncio == null)
@@ -218,12 +220,12 @@ namespace CirWebApi.Controllers
                 return NotFound();
             }
 
-            DeleteImage(anuncio);
-
+            DeleteImage(anuncio);   // Apaga dados com referencias em Denuncias e Chat_Master
+                                    // com ON DELETE CASCADE
             db.anuncios.Remove(anuncio);
             await db.SaveChangesAsync();
 
-            return Ok(anuncio);
+            return Ok();
         }
 
         private void DeleteImage(anuncio anuncio)
