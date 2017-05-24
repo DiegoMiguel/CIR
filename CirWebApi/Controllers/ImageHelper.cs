@@ -46,8 +46,7 @@ namespace CirWebApi.Controllers
             {
                 return null;
             }
-
-           
+   
             byte[] imgInByte = Convert.FromBase64String(imagem);
 
             Image imgReal;
@@ -99,6 +98,12 @@ namespace CirWebApi.Controllers
 
                 return Convert.ToBase64String(ms.ToArray());
             }
+        }
+
+        internal void DeleteAnuncioImages(string imagem, string thumbnail)
+        {
+            File.Delete(Path.Combine(_anuncioPath, imagem));
+            File.Delete(Path.Combine(_thumbnailPath, thumbnail));
         }
     }
 }

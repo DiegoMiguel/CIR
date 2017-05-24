@@ -143,6 +143,11 @@ namespace CirWebApi.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        internal void DeleteAnunciosImages(List<anuncio> anuncios)
+        {
+            anuncios.ForEach(anuncio => DeleteImage(anuncio));
+        }
+
         // POST: api/Anuncios
         /// <summary>
         /// Adiciona anúncio
@@ -213,10 +218,19 @@ namespace CirWebApi.Controllers
                 return NotFound();
             }
 
+            DeleteImage(anuncio);
+
             db.anuncios.Remove(anuncio);
             await db.SaveChangesAsync();
 
             return Ok(anuncio);
+        }
+
+        private void DeleteImage(anuncio anuncio)
+        {
+            if (!string.IsNullOrWhiteSpace(anuncio.Imagem)){
+                new ImageHelper(_currentContext).DeleteAnuncioImages(anuncio.Imagem, anuncio.Thumbnail);
+            }
         }
 
         protected override void Dispose(bool disposing)

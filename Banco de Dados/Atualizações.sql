@@ -18,3 +18,34 @@ GO
 ALTER TABLE [dbo].[anuncio]
     ADD [Thumbnail] TEXT NULL;
 GO
+
+/* Alterando tabelas para aceitar ON DELETE CASCADE */
+ALTER TABLE [dbo].[anuncio] DROP CONSTRAINT [FK_usr_anuncio];
+GO
+ALTER TABLE [dbo].[anuncio]
+    ADD CONSTRAINT [FK_usr_anuncio] FOREIGN KEY ([Usuario_id]) REFERENCES [dbo].[usuarios] ([Usuario_id]) ON DELETE CASCADE;
+	GO
+
+ALTER TABLE [dbo].[denuncias] DROP CONSTRAINT [FK_anunciodenuncia];
+GO
+ALTER TABLE [dbo].[denuncias]
+    ADD CONSTRAINT [FK_anunciodenuncia] FOREIGN KEY ([Anuncio_id]) REFERENCES [dbo].[anuncio] ([Anuncio_id]) ON DELETE CASCADE;
+GO
+
+ALTER TABLE [dbo].[preferencias] DROP CONSTRAINT [FK_usuario];
+GO
+ALTER TABLE [dbo].[preferencias]
+    ADD CONSTRAINT [FK_usuario] FOREIGN KEY ([usuario_id]) REFERENCES [dbo].[usuarios] ([Usuario_id]) ON DELETE CASCADE;
+	GO
+
+	ALTER TABLE [dbo].[chat_detalhe] DROP CONSTRAINT [FK_master_id];
+GO
+ALTER TABLE [dbo].[chat_master] DROP CONSTRAINT [FK_anuncio_chat];
+GO
+ALTER TABLE [dbo].[chat_detalhe]
+    ADD CONSTRAINT [FK_master_id] FOREIGN KEY ([Chat_Master_id]) REFERENCES [dbo].[chat_master] ([Chat_Master_id]) ON DELETE CASCADE;
+	GO
+ALTER TABLE [dbo].[chat_master]
+    ADD CONSTRAINT [FK_anuncio_chat] FOREIGN KEY ([Anuncio_id]) REFERENCES [dbo].[anuncio] ([Anuncio_id]) ON DELETE CASCADE;
+
+

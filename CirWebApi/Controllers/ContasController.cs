@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using System.Net.Http.Formatting;
 using System.Net.Http;
+using System;
 
 namespace CirWebApi.Controllers
 {
@@ -88,6 +89,11 @@ namespace CirWebApi.Controllers
             return null;
         }
 
+        internal async Task DeleteContaAsync(string email)
+        {
+            await _repositorio.DeleteUsuarioAsync(email);
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -97,7 +103,5 @@ namespace CirWebApi.Controllers
 
             base.Dispose(disposing);
         }
-
-        
     }
 }

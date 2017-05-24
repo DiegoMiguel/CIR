@@ -64,7 +64,9 @@
           <Property Name="Senha" Type="varchar" MaxLength="16" />
         </EntityType>
         <Association Name="FK_anunciodenuncia">
-          <End Role="anuncio" Type="Self.anuncio" Multiplicity="1" />
+          <End Role="anuncio" Type="Self.anuncio" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="denuncias" Type="Self.denuncias" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="anuncio">
@@ -112,7 +114,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_usr_anuncio">
-          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="anuncio" Type="Self.anuncio" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuarios">
@@ -136,7 +140,9 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_usuario">
-          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1" />
+          <End Role="usuarios" Type="Self.usuarios" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
           <End Role="preferencias" Type="Self.preferencias" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="usuarios">
@@ -260,8 +266,11 @@
           <NavigationProperty Name="preferencias" Relationship="Self.FK_usuario" FromRole="usuarios" ToRole="preferencias" />
         </EntityType>
         <Association Name="FK_anunciodenuncia">
-          <End Role="anuncio" Type="Self.anuncio" Multiplicity="1" />
-          <End Role="denuncias" Type="Self.denuncia" Multiplicity="*" />
+          <End Role="anuncio" Type="Self.anuncio" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="denuncias" Type="Self.denuncia" Multiplicity="*" >
+          </End>
           <ReferentialConstraint>
             <Principal Role="anuncio">
               <PropertyRef Name="Anuncio_id" />
@@ -284,8 +293,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_usr_anuncio">
-          <End Role="usuarios" Type="Self.usuario" Multiplicity="1" />
-          <End Role="anuncio" Type="Self.anuncio" Multiplicity="*" />
+          <End Role="usuarios" Type="Self.usuario" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="anuncio" Type="Self.anuncio" Multiplicity="*" >
+          </End>
           <ReferentialConstraint>
             <Principal Role="usuarios">
               <PropertyRef Name="Usuario_id" />
@@ -332,8 +344,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_usuario">
-          <End Role="usuarios" Type="Self.usuario" Multiplicity="1" />
-          <End Role="preferencias" Type="Self.preferencia" Multiplicity="*" />
+          <End Role="usuarios" Type="Self.usuario" Multiplicity="1" >
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="preferencias" Type="Self.preferencia" Multiplicity="*" >
+          </End>
           <ReferentialConstraint>
             <Principal Role="usuarios">
               <PropertyRef Name="Usuario_id" />

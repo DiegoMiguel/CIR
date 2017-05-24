@@ -138,15 +138,21 @@ namespace CirWebApi.Controllers
         /// <returns></returns>
         // DELETE: api/Usuarios/5
         [ResponseType(typeof(usuario))]
-        public async Task<IHttpActionResult> Deleteusuario(int id)
+        public async Task<IHttpActionResult> DeleteUsuario(int id)
         {
             usuario usuario = await db.usuarios.FindAsync(id);
+
             if (usuario == null)
             {
                 return NotFound();
             }
 
-            db.usuarios.Remove(usuario);
+            new AnunciosController().DeleteAnunciosImages(usuario.anuncios.ToList());
+
+            await new ContasController().DeleteContaAsync(usuario.Email);
+
+            db.usuarios.Remove(usuario); // No banco, com o ON DELETE CASCADE,
+                                         // todas as referências do usuário também são excluídas
             await db.SaveChangesAsync();
 
             return Ok(usuario);

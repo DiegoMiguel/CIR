@@ -46,6 +46,12 @@ namespace CirWebApi.Models
             return null;
         }
 
+        internal async Task DeleteUsuarioAsync(string email)
+        {
+            IdentityUser contaEncontrada = await _gerenciaDeUser.FindByNameAsync(email);
+            await _gerenciaDeUser.DeleteAsync(contaEncontrada);
+        }
+
         public void Dispose()
         {
             _contexto.Dispose();
